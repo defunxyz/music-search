@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-class Greeting extends React Component{
+class Greeting extends React.Component{
 
    const greet = () =>{
         var h = new Date().getHours();
