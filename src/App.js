@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Greeting} from './components';
+import Greeting from './components/Greeting';
 
 function App() {
   return (
@@ -9,4 +9,4 @@ function App() {
   );
 }
 
-export default Greeting;
+export default App;
