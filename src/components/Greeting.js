@@ -1,27 +1,37 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
-class Greeting extends React.Component{
+class Greeting extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      name: "Jerry",
+      message: "",
+      time: new Date().getHours()
+    };
+  }
 
-   //const greet = () =>{
-   getGreeting(){
-        var h = new Date().getHours();
-        var name = "Jerry";
-        var text = "";
-        if(h<12 && h>4){
-          text = "Good morning, ";
-        } else if(h<17 && h>12){
-          text = "Good afternoon, ";
-        }else {
-          text = "Good evening, ";
-        }
-        return text+name+".";
-      }
+  componentDidMount() {
+    this.greet();
+  }
 
-  render(){
-    return(
-       <h2>{this.getGreeting()}</h2>
-    );
+  greet = () => {
+    let t = this.state.time;
+    if (t < 12 && t > 4) {
+      this.setState({ message: "Good morning, "});
+    }
+    else if (t === 12) {
+      this.setState({ message: "Noon, "});
+    }
+    else if (t < 17 && t > 12) {
+      this.setState({ message: "Good afternoon, "});
+    }
+    else {
+      this.setState({ message: "Good evening, "});
+    }
+  };
+
+  render() {
+    return (<h2>{this.state.message + this.state.name}</h2>);
   }
 }
 export default Greeting;
