@@ -6,11 +6,6 @@
  * @copyright 2020 Fisnik
  */
 
- /* 
-   Todo:
-     - Finish Search API functions
- */
-
 import axios from 'axios';
 var querystring = require('querystring');
 
