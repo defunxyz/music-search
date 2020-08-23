@@ -25,7 +25,7 @@ const SPOTIFY_CLIENT_SECRET = 'a7f683d12dae40f5a8a6a162cc408bbe';
 const Napster_Auth_Endpoint = `https://api.napster.com/oauth/access_token`;
 
 const Spotify_Auth_Endpoint = `https://accounts.spotify.com/api/token`;
-const Spotify_Search_Endpoint = (term, type) => `https://api.spotify.com/v1/search?q=${term}&type=${type}`;
+const Spotify_Search_Endpoint = `https://api.spotify.com/v1/search?`;
 const Napster_Search_Endpoint = (key, term) => `http://api.napster.com/v2.2/search/verbose?apikey=${key}&query=${term}`;
 
 // Tokens
@@ -87,7 +87,23 @@ export const searchNapsterAPI = async (term) => {
 
 export const searchSpotifyAPI = async (term, type) => {
     term = encodeURIComponent(term);
-    axios.get(Spotify_Search_Endpoint(term, type));
+    axios({
+        url: Spotify_Search_Endpoint,
+        method: 'get',
+        params: {
+            q: term,
+            type: type
+        },
+        headers: {
+            'Accept':'application/json',
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': 'Bearer ' + spotify_token.access_token
+        }
+    }).then(function(response) {
+        console.log(response);
+    }).catch(function(error) {
+        console.log(error);
+    });
 };
 
 /**

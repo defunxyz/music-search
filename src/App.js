@@ -1,5 +1,5 @@
 import React from 'react';
-import { authSpotifyAPI, authNapsterAPI, getSpotifyToken } from './api';
+import { authSpotifyAPI, authNapsterAPI, getSpotifyToken, searchSpotifyAPI } from './api';
 import './App.css';
 
 class App extends React.Component {
@@ -15,8 +15,11 @@ class App extends React.Component {
   componentDidMount(){
     if (Object.keys(this.state.spotify_token).length === 0) {
       this.authSpotify();
-      this.authNapster();
     }
+  }
+
+  searchSpotify = async (term, type) => {
+    searchSpotifyAPI(term, type);
   }
 
   authNapster = async () => {
@@ -43,6 +46,7 @@ class App extends React.Component {
 
       // Next line to be removed once localStorage is implemented
       console.log(this.state.spotify_token);
+      this.searchSpotify("coldplay", "artist");
     }
   }
 
