@@ -1,6 +1,15 @@
+/**
+ * A greeting component, that based on time of the day
+ * greets the user. E.g. 'Good morning, Alexa'.
+ *
+ * @file components/Greeting.js
+ * @author Jerry
+ * @copyright 2020 Jerry
+ */
+
 import React, { Component } from "react";
 
-class Greeting extends Component {
+export default class Greeting extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -10,7 +19,7 @@ class Greeting extends Component {
     };
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.greet();
   }
 
@@ -34,4 +43,3 @@ class Greeting extends Component {
     return (<h2>{this.state.message + this.state.name}</h2>);
   }
 }
-export default Greeting;
