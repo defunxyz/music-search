@@ -1,5 +1,5 @@
 import React from 'react';
-import { authSpotifyAPI, authNapsterAPI, getSpotifyToken, searchSpotifyAPI } from './api';
+import { authSpotifyAPI, getSpotifyToken, searchSpotifyAPI, getArtistAlbumSpotify } from './api';
 import './App.css';
 
 class App extends React.Component {
@@ -7,6 +7,7 @@ class App extends React.Component {
     super(prop);
     this.state = {
       spotify_token: {},
+      artist: {},
       error: false, 
       errorMessage: ""
     };
@@ -18,12 +19,26 @@ class App extends React.Component {
     }
   }
 
-  searchSpotify = async (term, type) => {
-    searchSpotifyAPI(term, type);
+  getAlbum = async (id) => {
+    console.log(this.state.artist.id);
+    getArtistAlbumSpotify(id);
   }
 
-  authNapster = async () => {
-    authNapsterAPI();
+  searchSpotify = async (term, type) => {
+    let response;
+    try{
+      response = await searchSpotifyAPI(term, type);
+    } catch(e) {
+      console.log(e.message);
+    }
+
+    if(response.success) {
+      this.setState({
+        artist: response.data.artists.items[0]
+      });
+    }
+
+    this.getAlbum(this.state.artist.id);
   }
 
   authSpotify = async () => {
@@ -41,11 +56,10 @@ class App extends React.Component {
 
     if(success) {
       this.setState({
-      spotify_token: getSpotifyToken()
+        spotify_token: getSpotifyToken()
       });
 
       // Next line to be removed once localStorage is implemented
-      console.log(this.state.spotify_token);
       this.searchSpotify("coldplay", "artist");
     }
   }

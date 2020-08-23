@@ -26,6 +26,7 @@ const Napster_Auth_Endpoint = `https://api.napster.com/oauth/access_token`;
 
 const Spotify_Auth_Endpoint = `https://accounts.spotify.com/api/token`;
 const Spotify_Search_Endpoint = `https://api.spotify.com/v1/search?`;
+const Spotify_Artists_Albums_Endpoint = (id) => `https://api.spotify.com/v1/artists/${id}/albums`;
 const Napster_Search_Endpoint = (key, term) => `http://api.napster.com/v2.2/search/verbose?apikey=${key}&query=${term}`;
 
 // Tokens
@@ -85,25 +86,48 @@ export const searchNapsterAPI = async (term) => {
     axios.get(Napster_Search_Endpoint(NAPSTER_API_KEY, term));
 };
 
-export const searchSpotifyAPI = async (term, type) => {
+/**
+ * Asynchronous function that retrieves Spotify Catalog information about albums, artists, 
+ * playlists, tracks, shows or episodes that match a keyword string.
+ * 
+ * @param {*} term 
+ * @param {*} type 
+ * @param {*} offset 
+ * @param {*} limit
+ */
+export const searchSpotifyAPI = async (term, type, offset=0, limit=1) => {
     term = encodeURIComponent(term);
-    axios({
+    return axios({
         url: Spotify_Search_Endpoint,
         method: 'get',
         params: {
             q: term,
-            type: type
+            type: type,
+            offset: offset,
+            limit: limit
         },
         headers: {
             'Accept':'application/json',
-            // 'Content-Type': 'application/x-www-form-urlencoded',
             'Authorization': 'Bearer ' + spotify_token.access_token
         }
     }).then(function(response) {
-        console.log(response);
+        return {success: true, data: response.data};
     }).catch(function(error) {
-        console.log(error);
+        return {success: false, error: error };
     });
+};
+
+//https://api.spotify.com/v1/artists/{id}/albums
+export const getArtistAlbumSpotify = (id) => {
+    let endpoint = Spotify_Artists_Albums_Endpoint(id);
+    axios({
+        url: endpoint,
+        method: 'get',
+        headers: {
+            'Accept':'application/json',
+            'Authorization': 'Bearer ' + spotify_token.access_token
+        }
+    }).then(function(response) { console.log(response); }).catch(function(error) { console.log(error); });
 };
 
 /**
