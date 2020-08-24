@@ -1,0 +1,404 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+body {
+    direction: ltr;
+    unicode-bidi: embed;
+    font-family: 'Roboto', sans-serif;
+    background-color: #393939;
+    min-height: 100vh;
+    scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-rendering: geometricPrecision;
+    text-size-adjust: 100%;
+}
+
+img {
+    image-rendering: crisp-edges;
+}
+
+a {
+    transition-duration: 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+    position: relative;
+    height: 100%;
+}
+
+.clearfix::after {
+    content: "";
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.hidden {
+    display: none;
+    visibility: hidden;
+}
+
+.fixed { position: fixed !important; }
+
+#root {
+    display: grid;
+    grid-template-rows: 3.5rem auto 3rem;
+    grid-template-columns: auto 1fr;
+    grid-template-areas: 'header main' 'nav main' 'nav footer';
+    height: 100%;
+    width: 100%;
+    min-height: 100%;
+}
+
+header {
+    padding: 0.5rem;
+    background: none repeat scroll 0 0 #000000;
+    opacity: 0.7;
+    text-align: center;
+    grid-area: header;
+    z-index: 1;
+}
+
+main {
+    isolation: isolate;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #585454;
+    position: relative;
+    grid-area: main;
+    padding: 1rem;
+}
+
+nav {
+    height: 100%;
+    background: none repeat scroll 0 0 #000000;
+    opacity: 0.7;
+    grid-area: nav;
+    z-index: 1;
+    position: relative;
+}
+
+footer {
+    background: none repeat scroll 0 0 #000000;
+    opacity: 0.7;
+    width: 100%;
+    grid-area: footer;
+    background-image: linear-gradient(90deg, #af2896, #509bf5);
+    text-align: center;
+    color: #ffff;
+    line-height: 3;
+    position: relative;
+}
+
+footer span {
+    font-weight: 500;
+}
+
+section {
+    z-index: 1;
+    display: block;
+}
+
+.background-container {
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+}
+
+.background-container img {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: inline-block;
+}
+
+
+/*
+    Logo
+*/
+
+svg.logo {
+    width: 50px;
+    height: 50px;
+    fill: rgb(156, 154, 154);
+    fill-opacity: 0.5;
+    opacity: 1;
+}
+
+.cls-1,
+.cls-2 {
+    fill: none;
+    fill-opacity: 1 !important;
+    stroke: rgb(2, 255, 137);
+    stroke-linejoin: round;
+    stroke-width: 3px;
+}
+
+.cls-1 {
+    stroke-linecap: round;
+}
+
+.cls-2 {
+    stroke-linecap: square;
+}
+
+
+/*
+    Navigation
+*/
+nav ul {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav ul,
+nav li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    margin-bottom: 1rem;
+}
+
+nav li:first-child {
+    margin-top: 1rem;
+}
+
+nav li:last-child {
+    margin-top: auto;
+}
+
+nav svg {
+    width: 50px;
+    height: 50px;
+    fill: rgb(156, 154, 154);
+    fill-opacity: 0.6;
+    opacity: 1;
+}
+
+nav a:hover>svg {
+    fill: rgb(255, 255, 255);
+    fill-opacity: 1;
+    opacity: 1;
+}
+
+nav svg.active,
+nav svg.active:hover {
+    fill: rgb(3, 112, 255) !important;
+    fill-opacity: 1 !important;
+    opacity: 1 !important;
+}
+
+/*
+   Form elements
+*/
+form {
+    margin: 0 auto;
+    width: 350px;
+    height: 100%;
+}
+
+input { 
+    display: block; 
+    width: 100%;
+    margin-top: 0.6rem;
+    height: 50px; 
+    border-radius: 6px; 
+    border: 0 none;
+    font-size: 16px;
+    line-height: 48px;
+    padding: 0 16px;
+}
+
+input:focus {
+    outline:none !important;
+}
+
+input[type=text] {
+    background: #eeeeee;
+    border: 1px solid #dddfe2;
+    font-size: 18px;
+    line-height: 18px;
+    color: #1d2129;
+}
+
+input[type=submit] {
+    color: #fff;
+    background: #1877f2;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+input[type=submit]:focus,
+input[type=submit]:active
+{
+    border: 2px solid #00bdfc;
+    outline:none !important;
+}
+
+/* Greeting */
+.greeting {
+    color: #fff;
+}
+
+.greeting h3 {
+    font-weight: 300;
+}
+
+.greeting .user {
+    font-weight: 500;
+}
+
+/*
+   Overlay Container
+*/
+.overlay-container {
+    background: white;
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    z-index: 999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: #11100f;
+    overflow: hidden;
+}
+
+.overlay-container section {
+    margin-top: 1rem;
+    min-width: 960px;
+}
+
+.overlay-container section h3 {
+    font-weight: 200;
+}
+
+.overlay-container section h3 span {
+    font-weight: 500;
+}
+
+/*
+   Player
+*/
+.player {
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+    margin-top: 60px;
+}
+
+.player .album-cover {
+    width: 200px;
+    height: 200px;
+    padding: 0rem;
+    border-radius: 4px;
+    border: 3px solid #1877F2;
+    opacity: 1;
+}
+
+.player .album-cover img {
+    height: 100%;
+    width: 100%;
+    border-radius: 2px;
+}
+
+.player .song-title {
+    color: #fff;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.56);
+    opacity: 0.95;
+    margin-top: 0.35rem;
+    margin-bottom: 0.35rem;
+}
+
+@media screen and (max-width: 480px) {
+    #root {
+        display: block;
+    }
+    #root {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: auto 1fr;
+        grid-template-areas: 'header' 'main' 'nav' 'footer';
+    }
+    header {
+        opacity: 0.6;
+        position: relative;
+    }
+    svg.logo {
+        width: 32px;
+        height: 32px;
+    }
+    nav {
+        width: 100%;
+        height: 3rem;
+        z-index: 1;
+        line-height: 1.35;
+        grid-area: nav;
+    }
+    nav ul {
+        flex-direction: row;
+    }
+    nav li {
+        height: 100%;
+        width: 100%;
+        margin-bottom: 0;
+    }
+    nav li:first-child {
+        margin-top: initial;
+    }
+    nav li:last-child {
+        margin-top: initial;
+    }
+    nav svg {
+        width: 26.25px;
+        height: 26.25px;
+    }
+}

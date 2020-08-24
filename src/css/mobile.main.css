@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    direction: ltr;
+    unicode-bidi: embed;
+    font-family: 'Roboto', sans-serif;
+    background-color: #393939;
+    scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-rendering: geometricPrecision;
+    text-size-adjust: 100%;
+}
+
+img {
+    image-rendering: crisp-edges;
+}
+
+a {
+    transition-duration: 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+    position: relative;
+    height: 100%;
+}
+
+.clearfix::after {
+    content: "";
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.hidden {
+    display: none;
+    visibility: hidden;
+}
+
+#root {
+    height: 100%;
+    width: 100%;
+}
+
+header {
+    padding: 0.5rem;
+    background: none repeat scroll 0 0 #000000;
+    opacity: 0.6;
+    position: relative;
+    text-align: center;
+    z-index: 1;
+}
+
+main {
+    isolation: isolate;
+    height: 100%;
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #585454;
+    position: relative;
+}
+
+nav {
+    display: block;
+    height: 100%;
+    background: none repeat scroll 0 0 #000000;
+    opacity: 0.7;
+    z-index: 1;
+    position: absolute;
+    bottom: 2.4rem;
+}
+
+footer {
+    display: block;
+    background: none repeat scroll 0 0 #000000;
+    opacity: 0.7;
+    width: 100%;
+    background-image: linear-gradient(90deg, #af2896, #509bf5);
+    text-align: center;
+    color: #ffff;
+    bottom: 0;
+    line-height: 2.4;
+    position: absolute;
+}
+
+footer span {
+    font-weight: 500;
+}
+
+section {
+    z-index: 1;
+    display: block;
+}
+
+.background-container {
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+}
+
+.background-container img {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: inline-block;
+}
+
+
+/*
+    Logo
+*/
+svg.logo {
+    width: 32px;
+    height: 32px;
+    fill: rgb(156, 154, 154);
+    fill-opacity: 0.5;
+    opacity: 1;
+}
+
+.cls-1,
+.cls-2 {
+    fill: none;
+    fill-opacity: 1 !important;
+    stroke: rgb(2, 255, 137);
+    stroke-linejoin: round;
+    stroke-width: 3px;
+}
+
+.cls-1 {
+    stroke-linecap: round;
+}
+
+.cls-2 {
+    stroke-linecap: square;
+}
+
+
+/*
+    Navigation
+*/
+nav {
+    width: 100%;
+    height: 3rem;
+    z-index: 1;
+    line-height: 1.35;
+}
+
+nav ul {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav ul,
+nav li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    height: 100%;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+nav li:first-child {
+    margin-top: initial;
+}
+
+nav li:last-child {
+    margin-top: initial;
+}
+
+nav svg {
+    width: 26.25px;
+    height: 26.25px;
+    fill: rgb(156, 154, 154);
+    fill-opacity: 0.6;
+    opacity: 1;
+}
+
+nav a:hover > svg {
+    fill: rgb(255, 255, 255);
+    fill-opacity: 1;
+    opacity: 1;
+}
+
+nav svg.active,
+nav svg.active:hover {
+    fill: rgb(3, 112, 255) !important;
+    fill-opacity: 1 !important;
+    opacity: 1 !important;
+}
+
+
+/* Greeting */
+.greeting {
+    color: #fff;
+}
+
+.greeting h3 {
+    font-weight: 300;
+}
+
+.greeting .user {
+    font-weight: 500;
+}
+
+/*
+   Player
+*/
+.player {
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+    margin-top: 50px;
+}
+
+.player .album-cover {
+    width: 150px;
+    height: 150px;
+    padding: 0rem;
+    border-radius: 4px;
+    border: 3px solid #1877F2;
+    opacity: 1;
+}
+
+.player .album-cover img {
+    height: 100%;
+    width: 100%;
+    border-radius: 2px;
+}
+
+.player .song-title {
+    color: #fff;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.56);
+    opacity: 0.95;
+    margin-top: 0.35rem;
+    margin-bottom: 0.35rem;
+}
+
+/*
+   Form elements
+*/
+form {
+    margin: 0 auto;
+    width: 300px;
+    height: 100%;
+}
+
+input { 
+    display: block; 
+    width: 100%;
+    margin-top: 0.6rem;
+    height: 50px; 
+    border-radius: 6px; 
+    border: 0 none;
+    font-size: 16px;
+    line-height: 48px;
+    padding: 0 16px;
+}
+
+input:focus {
+    outline:none !important;
+}
+
+input[type=text] {
+    background: #eeeeee;
+    border: 1px solid #dddfe2;
+    font-size: 18px;
+    line-height: 18px;
+    color: #1d2129;
+}
+
+input[type=submit] {
+    color: #fff;
+    background: #1877f2;
+    font-weight: 700;
+}
+
+input[type=submit]:focus,
+input[type=submit]:active
+{
+    border: 2px solid #84ADFF;
+    outline:none !important;
+}
+
+/*
+   Overlay Container
+*/
+.overlay-container {
+    background: white;
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    z-index: 999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: #11100f;
+    overflow: hidden;
+}
+
+.overlay-container > svg.logo {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 1rem;
+}
+
+.overlay-container section {
+    margin-top: 1rem;
+    min-width: 960px;
+}
+
+.overlay-container section h3 {
+    font-weight: 200;
+}
+
+.overlay-container section h3 span {
+    font-weight: 500;
+}

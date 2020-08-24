@@ -6,7 +6,6 @@ import {
   NavLink
 } from 'react-router-dom';
 import { Home, About, Music, Settings } from './views';
-import './App.css';
 
 export default class App extends React.Component {
   render() {
