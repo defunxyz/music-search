@@ -235,7 +235,11 @@ nav svg.active:hover {
 form {
     margin: 0 auto;
     width: 350px;
-    height: 100%;
+    height: 80%;
+}
+
+form.backgrounds {
+    width: 500px;
 }
 
 input { 
@@ -357,6 +361,44 @@ input[type=submit]:active
     margin-top: 0.35rem;
     margin-bottom: 0.35rem;
 }
+
+/* Gallery Grid */
+figure[role="group"] {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    margin-bottom: 1.5em;
+    margin-top: 0.8rem;
+}
+
+figure[role="group"] > figure {
+    overflow: hidden;
+    margin-left: auto;
+    width: 50%;
+    margin-right: auto;
+    padding: 0.1rem;
+    border-radius: 0.4rem;
+    text-align: center;
+    margin-bottom: 0;
+    height: 140px;
+    cursor: pointer;
+}
+
+figure[role="group"] > figure.selected {
+    border: 0.2rem solid #1877F2;
+    padding: 0;
+}
+
+figure[role="group"] > figure img {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.1rem;
+}
+
+
 
 @media screen and (max-width: 480px) {
     #root {
