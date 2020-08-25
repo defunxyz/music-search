@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-import Greeting from './components/Greeting';
+import {UseMobileDetect} from './components/index.js';;
 
 function App() {
-  return (
-  <Greeting/>
+  //return (
+  //<UseMobileDetect/>
+  
 
-  );
+  //);
+ 
+     useEffect(() =>{
+      if(UseMobileDetect()) {
+        console.log("Yes, this is mobile.");    
+        return false;
+      }
+     });
+
+     
 }
 
 export default App;
