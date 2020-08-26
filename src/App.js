@@ -1,22 +1,17 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import {UseMobileDetect} from './components/index.js';;
+import { useMobileDetect } from './hooks/UseMobileDetect.js';;
 
 function App() {
-  //return (
-  //<UseMobileDetect/>
-  
+  const detectMobile = useMobileDetect();
 
-  //);
- 
-     useEffect(() =>{
-      if(UseMobileDetect()) {
-        console.log("Yes, this is mobile.");    
-        return false;
-      }
-     });
-
-     
+  return (
+    <>
+      <h2>Mobile Detect</h2>
+      {detectMobile.isMobile() && <p>This is <strong>Mobile</strong></p>}
+      {!detectMobile.isMobile() && <p>This is <strong>Desktop or some other unknown device.</strong></p>}
+    </>
+  );
 }
 
 export default App;
