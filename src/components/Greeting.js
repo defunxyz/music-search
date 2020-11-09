@@ -7,13 +7,25 @@
  * @copyright 2020 Jerry
  */
 
-import React, { Component } from "react";
+import React, { Component } from "react"
+import styled from "styled-components"
+
+const Greetings = styled.div`
+  color: #fff;
+  padding: 1rem;
+`
+const Text = styled.h3`
+  font-weight: 300
+`
+const Username = styled.span`
+font-weight: 500;
+`
 
 export default class Greeting extends Component {
   constructor(props) {
     super()
     this.state = {
-      name: "Jerry",
+      name: "",
       message: "",
       time: new Date().getHours()
     };
@@ -40,6 +52,9 @@ export default class Greeting extends Component {
   };
 
   render() {
-    return (<h2>{this.state.message + this.state.name}</h2>);
+    return (
+    <Greetings className="rfloat">
+      <Text>{this.state.message}<Username>{this.state.name}</Username></Text>
+      </Greetings>);
   }
 }
