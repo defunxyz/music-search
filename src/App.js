@@ -4,7 +4,7 @@ import './App.css';
 
 class App extends React.Component {
   constructor(prop){
-    super(prop);
+    super();
     this.state = {
       spotify_token: {},
       artist: {},
@@ -60,7 +60,7 @@ class App extends React.Component {
       });
 
       // Next line to be removed once localStorage is implemented
-      this.searchSpotify("coldplay", "artist");
+      this.searchSpotify("cold", "artist");
     }
   }
 

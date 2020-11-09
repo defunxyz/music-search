@@ -61,7 +61,7 @@ export const authSpotifyAPI = async () => {
         headers: {
           'Accept':'application/json',
           'Content-Type': 'application/x-www-form-urlencoded',
-          'Authorization': 'Basic ' + (new Buffer(SPOTIFY_CLIENT_ID + ':' + SPOTIFY_CLIENT_SECRET).toString('base64'))
+          'Authorization': 'Basic ' + (Buffer.from(SPOTIFY_CLIENT_ID + ':' + SPOTIFY_CLIENT_SECRET).toString('base64'))
         },
         data: querystring.stringify({ grant_type: 'client_credentials'}),
         auth: {
@@ -90,16 +90,16 @@ export const searchNapsterAPI = async (term) => {
  * @param {*} offset 
  * @param {*} limit
  */
-export const searchSpotifyAPI = async (term, type, offset=0, limit=1) => {
+export const searchSpotifyAPI = async (term, type) => {
     term = encodeURIComponent(term);
     return axios({
         url: Spotify_Search_Endpoint,
         method: 'get',
         params: {
             q: term,
-            type: type,
-            offset: offset,
-            limit: limit
+            type: type
+            // offset: offset,
+            // limit: limit
         },
         headers: {
             'Accept':'application/json',
