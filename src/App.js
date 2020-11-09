@@ -1,31 +1,12 @@
 import React from 'react';
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink
-} from 'react-router-dom';
-import { Home, About, Music, Settings } from './views';
->>>>>>> css
+import Greeting from './components/Greeting';
 
 export default class App extends React.Component {
   render() {
     return(
       <>
+      <Greeting/>
       </>
     );
   }
 };
-=======
-
-import Greeting from './components/Greeting';
-
-function App() {
-  return (<Greeting/>);
-}
-
-export default App;
->>>>>>> greeting-component

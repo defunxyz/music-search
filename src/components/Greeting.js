@@ -11,7 +11,7 @@ import React, { Component } from "react";
 
 export default class Greeting extends Component {
   constructor(props) {
-    super(props)
+    super()
     this.state = {
       name: "Jerry",
       message: "",
