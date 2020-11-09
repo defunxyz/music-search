@@ -1,5 +1,6 @@
 import React from 'react';
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import {
   BrowserRouter as Router,
@@ -18,3 +19,13 @@ export default class App extends React.Component {
     );
   }
 };
+=======
+
+import Greeting from './components/Greeting';
+
+function App() {
+  return (<Greeting/>);
+}
+
+export default App;
+>>>>>>> greeting-component
