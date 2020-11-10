@@ -1,14 +1,15 @@
 import React from 'react';
 import Autosuggest from './Autosuggest';
-import { authSpotifyAPI, getSpotifyToken, searchSpotifyAPI, getArtistAlbumSpotify } from './api';
+import { authSpotifyAPI, getSpotifyToken, searchSpotifyAPI, getArtistAlbumSpotify } from '../api';
 
 export default class Search extends React.Component {
     constructor() {
         super();
         this.state = {
             query: "",
+            cursor: 0,
             spotify_token: {},
-            matches: {},
+            matches: [],
             error: false,
             errorMessage: ""
         }
@@ -37,54 +38,80 @@ export default class Search extends React.Component {
           this.setState({
             spotify_token: getSpotifyToken()
           });
-    
-          // Next line to be removed once localStorage is implemented
         }
     }
 
     searchSpotify = async (term, type) => {
         let response;
-        try{
-          response = await searchSpotifyAPI(term, type);
-        } catch(e) {
-          console.log(e.message);
+        let matches = []
+        if(term.length > 0)
+        {
+          const regex = new RegExp(`^${term}`, 'i');
+
+          try{
+            response = await searchSpotifyAPI(term, type);
+          } catch(e) {
+            console.log(e.message);
+          }
+      
+          if(response.success) {
+            matches = response.data.artists.items;
+            this.setState(() => ({matches}));
+          }
         }
-    
-        if(response.success) {
-          this.setState({
-            matches: response.data.artists.items
-          });
+        else {
+          this.setState({ matches: [] });
         }
-    
-        this.getAlbum(this.state.artist.id);
     }
 
     handleKeyChange = (e) => {
-        this.setState({query: e.target.value});
-        this.searchSpotify(this.state.query, "artist");
+      const value =  e.target.value;
+      if(value.length > 0){
+        this.searchSpotify(value, "album,artist,track");
+      }
+
+      this.setState({query: value});
+      this.searchSpotify("", "album,artist,track");
     }
 
-    handleKeyPress = (e) => {
-        if(e === 'Enter') {
+    handleKeyDown = (e) => {
+      const { cursor, matches } = this.state
+      if (e.keyCode === 38 && cursor > 0) {
+        this.setState(prevState => ({
+          cursor: prevState.cursor - 1
+        }))
+      } else if (e.keyCode === 40 && cursor < matches.length - 1) {
+        this.setState(prevState => ({
+          cursor: prevState.cursor + 1
+        }))
+      }
+    }
 
-        }
+    renderSuggestions = () => {
+      const {matches, cursor} = this.state;
+
+      if(matches.length === 0) { return; }
+      return (
+       <Autosuggest matches={matches} cursor={cursor} />
+      )
     }
 
     render() {
-        const {matches} = this.state;
+        const {query} = this.state;
         return (
-            <section className="search-container">
-                <div id="searchbox" className="searchbox" role="searchbox">
-                    <form id="search-form">
-                        <input 
-                        type="search"
-                        placeholder="Seach artists, songs, or lyrics" 
-                        onChange={this.handleKeyChange} 
-                        onKeyPress={this.handleKeyPress} />
-                    </form>
-                </div>
-                <Autosuggest matches={matches} />
-            </section>
+          <section className="search-container">
+            <div id="searchbox" className="searchbox" role="searchbox">
+              <form id="search-form">
+                <input
+                  type="search"
+                  value={query}
+                  placeholder="Seach artists, songs, or lyrics"
+                  onChange={this.handleKeyChange}
+                  onKeyDown={this.handleKeyDown} />
+              </form>
+            </div>
+            {this.renderSuggestions()}
+          </section>
         );
     }
 };

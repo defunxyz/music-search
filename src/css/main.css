@@ -186,10 +186,13 @@ section {
     border-radius: 0 0 8px 8px !important;
 }
 
-.autosuggest ul li .autocomplete-item:hover {
+.autosuggest ul li .autocomplete-item:hover,
+.autosuggest ul li .autocomplete-item.selected {
     background-color: #509bf5;
     color: #333;
 }
+
+
 
 .autosuggest ul li .autocomplete-item .label {
     padding: 12px 14px 12px 0;
