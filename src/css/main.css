@@ -1,0 +1,402 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+body {
+    direction: ltr;
+    unicode-bidi: embed;
+    font-family: 'Roboto', sans-serif;
+    background-color: #393939;
+    min-height: 100vh;
+    scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-rendering: geometricPrecision;
+    text-size-adjust: 100%;
+}
+
+img {
+    image-rendering: crisp-edges;
+}
+
+a {
+    transition-duration: 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+    position: relative;
+    height: 100%;
+}
+
+.clearfix::after {
+    content: "";
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.hidden {
+    display: none;
+    visibility: hidden;
+}
+
+.fixed { position: fixed !important; }
+.lfloat { float: left !important; }
+.rfloat { float: right !important; }
+
+#root {
+    height: 100%;
+    width: 100%;
+    min-height: 100%;
+    background: #222;
+}
+
+header {
+    opacity: 0.8;
+}
+
+header > h1 {
+    background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(90deg, #af2896, #509bf5);
+    padding: 1rem;
+    font-size: 1.1rem;
+    text-rendering: geometricPrecision;
+}
+
+main {
+    width: 100%;
+    position: relative;
+    padding: 1rem;
+}
+
+footer {
+    background: none repeat scroll 0 0 #000000;
+    opacity: 0.7;
+    width: 100%;
+    background-image: linear-gradient(90deg, #af2896, #509bf5);
+    text-align: center;
+    color: #ffff;
+    line-height: 3;
+    position: absolute;
+    bottom: 0;
+}
+
+footer span {
+    font-weight: 500;
+}
+
+section {
+    z-index: 1;
+    display: block;
+}
+
+.search-container {
+    width: 960px;
+    max-width: 100%;
+    margin: 56px auto;
+    position: relative;
+}
+
+.search-container .searchbox form {
+    border-radius: 8px;
+    background: #313235 !important;
+}
+
+.search-container .searchbox form:focus-within {
+    background: #363739 !important;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .60), 0 6px 10px 4px rgba(0, 0, 0, .30) !important;
+    transition: ease-in;
+    transition-duration: .3s;
+}
+
+.search-container .searchbox form > input[type=search]
+{
+    display: block;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 16px;
+    line-height: 48px;
+    padding: 0 16px;
+    background-color: transparent;
+    color: #fff;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+}
+
+.autosuggest {
+    position: absolute;
+    width: 100%;
+    text-align: left;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.258824),0 2px 10px 0 rgba(0,0,0,0.156863) !important;
+    border: none !important;
+    border-radius: 0 0 8px 8px !important;
+    top: 44px;
+    z-index: 10000;
+}
+
+.autosuggest ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    line-height: 1.25rem;
+    color: #e8eaed;
+}
+
+.autosuggest ul li {
+    line-height: 24px;
+    overflow: hidden;
+    display: block;
+}
+
+.autosuggest ul li .autocomplete-item {
+    background-color: #28292c;
+    overflow: hidden;
+    display: block;
+    word-wrap: break-word;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.autosuggest ul li:last-child .autocomplete-item
+{
+    border-radius: 0 0 8px 8px !important;
+}
+
+.autosuggest ul li .autocomplete-item:hover {
+    background-color: #509bf5;
+    color: #333;
+}
+
+.autosuggest ul li .autocomplete-item .label {
+    padding: 12px 14px 12px 0;
+    line-height: 24px;
+    margin: 0 0 0 13px;
+}
+
+.autosuggest ul li .autocomplete-item a {
+    margin: 0 0 0 13px;
+}
+
+.background-container {
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+}
+
+.background-container img {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: inline-block;
+}
+
+
+/*
+    Logo
+*/
+
+svg.logo {
+    width: 50px;
+    height: 50px;
+    fill: rgb(156, 154, 154);
+    fill-opacity: 0.5;
+    opacity: 1;
+}
+
+.cls-1,
+.cls-2 {
+    fill: none;
+    fill-opacity: 1 !important;
+    stroke: rgb(2, 255, 137);
+    stroke-linejoin: round;
+    stroke-width: 3px;
+}
+
+.cls-1 {
+    stroke-linecap: round;
+}
+
+.cls-2 {
+    stroke-linecap: square;
+}
+
+
+/*
+    Navigation
+*/
+nav ul {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav ul,
+nav li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    margin-bottom: 1rem;
+}
+
+nav li:first-child {
+    margin-top: 1rem;
+}
+
+nav li:last-child {
+    margin-top: auto;
+}
+
+nav svg {
+    width: 50px;
+    height: 50px;
+    fill: rgb(156, 154, 154);
+    fill-opacity: 0.6;
+    opacity: 1;
+}
+
+nav a:hover>svg {
+    fill: rgb(255, 255, 255);
+    fill-opacity: 1;
+    opacity: 1;
+}
+
+nav svg.active,
+nav svg.active:hover {
+    fill: rgb(3, 112, 255) !important;
+    fill-opacity: 1 !important;
+    opacity: 1 !important;
+}
+
+/* Greeting */
+.greeting {
+    color: #fff;
+    padding: 1rem;
+}
+
+.greeting h3 {
+    font-weight: 300;
+}
+
+.greeting .user {
+    font-weight: 500;
+}
+
+/*
+   Overlay Container
+*/
+.overlay-container {
+    background: white;
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    z-index: 999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: #11100f;
+    overflow: hidden;
+}
+
+.overlay-container section {
+    margin-top: 1rem;
+    min-width: 960px;
+}
+
+.overlay-container section h3 {
+    font-weight: 200;
+}
+
+.overlay-container section h3 span {
+    font-weight: 500;
+}
+
+
+@media screen and (max-width: 480px) {
+    #root {
+        display: block;
+    }
+    #root {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: auto 1fr;
+        grid-template-areas: 'header' 'main' 'nav' 'footer';
+    }
+    header {
+        opacity: 0.6;
+        position: relative;
+    }
+    svg.logo {
+        width: 32px;
+        height: 32px;
+    }
+    nav {
+        width: 100%;
+        height: 3rem;
+        z-index: 1;
+        line-height: 1.35;
+        grid-area: nav;
+    }
+    nav ul {
+        flex-direction: row;
+    }
+    nav li {
+        height: 100%;
+        width: 100%;
+        margin-bottom: 0;
+    }
+    nav li:first-child {
+        margin-top: initial;
+    }
+    nav li:last-child {
+        margin-top: initial;
+    }
+    nav svg {
+        width: 26.25px;
+        height: 26.25px;
+    }
+}
