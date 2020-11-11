@@ -90,6 +90,9 @@ main {
     width: 100%;
     position: relative;
     padding: 1rem;
+    overflow: hidden;
+    min-height: 100vh;
+    margin-bottom: 48px;
 }
 
 footer {
@@ -116,7 +119,7 @@ section {
 .search-container {
     width: 960px;
     max-width: 100%;
-    margin: 56px auto;
+    margin: 0px auto;
     position: relative;
 }
 
@@ -145,6 +148,21 @@ section {
     box-sizing: border-box;
     border: none;
     outline: none;
+    margin-left: 30px;
+}
+
+.search-container .searchbox form svg 
+{
+    margin: 3px;
+    position: absolute;
+    top: .5rem;
+    left: .5rem;
+    fill: currentColor;
+}
+
+.search-container .searchbox form svg path
+{
+    color: #efefef !important;
 }
 
 .autosuggest {
@@ -167,7 +185,7 @@ section {
 }
 
 .autosuggest ul li {
-    line-height: 24px;
+    line-height: 26px;
     overflow: hidden;
     display: block;
 }
@@ -179,6 +197,8 @@ section {
     word-wrap: break-word;
     text-decoration: none;
     cursor: pointer;
+    min-height: 56px;
+    position: relative;
 }
 
 .autosuggest ul li:last-child .autocomplete-item
@@ -192,9 +212,26 @@ section {
 }
 
 .autosuggest ul li .autocomplete-item .label {
-    padding: 12px 14px 12px 0;
-    line-height: 24px;
-    margin: 0 0 0 13px;
+   position: absolute;
+   top: 4px;
+   left: 65px;
+}
+
+.autosuggest ul li .autocomplete-item span.type {
+    position: absolute;
+    top: 24px;
+    left: 65px;
+}
+
+.autosuggest ul li .autocomplete-item .image {
+    max-height: 56px;
+    max-width: 56px;
+    width: auto;
+    height: auto;
+    background-repeat: no-repeat;
+    padding: .2rem;
+    position: absolute;
+    border-radius: 3px;
 }
 
 .autosuggest ul li .autocomplete-item a {

@@ -1,6 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 import Greeting from "./components/Greeting"
+import Search from "./components/Search"
+import Cookies from 'universal-cookie'
 
 const AppText = styled.h1`
   background-clip: text;
@@ -12,18 +14,36 @@ const AppText = styled.h1`
 `
 
 export default class App extends React.Component {
+  constructor()
+  {
+    super();
+    this.state = {
+      name: ""
+    }
+  }
+
+  componentDidMount = () => {
+    const cookie = new Cookies();
+    cookie.set('username', 'Fisnik', { path: '/' });
+    let username = cookie.get('username');
+    this.setState({ name: username });
+  }
+
   render() {
+    const {name} = this.state;
     return(
       <>
         <header className="clearfix">
           <AppText className="lfloat">
             Instantly Search artists, songs,<br />anytime, anywhere.
           </AppText>
-          <Greeting />
+          <Greeting name={name} />
         </header>
-        <main></main>
+        <main>
+            <Search />
+        </main>
         <footer>
-        © 2020, Fisnik. <span role="img" aria-label="Red Heart">Made with ❤️</span>
+          © 2020, Fisnik. <span role="img" aria-label="Red Heart">Made with ❤️</span>
         </footer>
       </>
     );

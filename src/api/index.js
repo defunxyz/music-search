@@ -9,13 +9,6 @@
 import axios from 'axios';
 var querystring = require('querystring');
 
-// API Keys
-const NAPSTER_API_KEY = '';
-const NAPSTER_API_KEY_SECRET = '';
-
-const SPOTIFY_CLIENT_ID = '';
-const SPOTIFY_CLIENT_SECRET = '';
-
 // Endpoints ?client_id=${APIKEY}&response_type=code
 const Napster_Auth_Endpoint = `https://api.napster.com/oauth/access_token`;
 
@@ -34,8 +27,8 @@ export const authNapsterAPI = async () => {
         url: Napster_Auth_Endpoint,
         method: 'post',
         params: {
-            client_id: NAPSTER_API_KEY,
-            client_secret: NAPSTER_API_KEY_SECRET
+            client_id: process.env.REACT_APP_NAPSTER_API_KEY,
+            client_secret: process.env.REACT_APP_NAPSTER_API_KEY_SECRET
         },
         headers: {
             'Accept':'application/json',
@@ -61,12 +54,12 @@ export const authSpotifyAPI = async () => {
         headers: {
           'Accept':'application/json',
           'Content-Type': 'application/x-www-form-urlencoded',
-          'Authorization': 'Basic ' + (Buffer.from(SPOTIFY_CLIENT_ID + ':' + SPOTIFY_CLIENT_SECRET).toString('base64'))
+          'Authorization': 'Basic ' + (Buffer.from(process.env.REACT_APP_SPOTIFY_CLIENT_ID + ':' + process.env.REACT_APP_SPOTIFY_CLIENT_SECRET).toString('base64'))
         },
         data: querystring.stringify({ grant_type: 'client_credentials'}),
         auth: {
-          username: SPOTIFY_CLIENT_ID,
-          password: SPOTIFY_CLIENT_SECRET
+          username: process.env.REACT_APP_SPOTIFY_CLIENT_ID,
+          password: process.env.REACT_APP_SPOTIFY_CLIENT_SECRET
         }
     }).then(function(response) {
         spotify_token = response.data;
@@ -78,7 +71,7 @@ export const authSpotifyAPI = async () => {
 
 export const searchNapsterAPI = async (term) => {
     term = encodeURIComponent(term);
-    axios.get(Napster_Search_Endpoint(NAPSTER_API_KEY, term));
+    axios.get(Napster_Search_Endpoint(process.env.REACT_APP_NAPSTER_API_KEY, term));
 };
 
 /**
@@ -91,15 +84,14 @@ export const searchNapsterAPI = async (term) => {
  * @param {*} limit
  */
 export const searchSpotifyAPI = async (term, type) => {
-    term = encodeURIComponent(term);
     return axios({
         url: Spotify_Search_Endpoint,
         method: 'get',
         params: {
             q: term,
-            type: type
-            // offset: offset,
-            // limit: limit
+            type: type,
+            offset: 0,
+            limit: 8
         },
         headers: {
             'Accept':'application/json',
