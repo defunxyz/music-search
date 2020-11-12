@@ -25,3 +25,20 @@ export default function filterList (q, list) {
       return searchRegex.test(item.title);
     });
   }
+export default function convertNumber(number){
+		var nbr=number.toString();
+		var breakPoint=nbr.length%3;
+		var result="";		
+		if((breakPoint==0)&&(nbr.length>=6)){
+			breakPoint+=3;
+		}
+		for(j=0; j<nbr.length; j++){
+				if((j==breakPoint)&&(breakPoint!=0)){	
+					result+=",";						
+					breakPoint+=3;
+				} 
+				result+=nbr[j];
+		}
+		console.log(result);
+		return result;
+	}
