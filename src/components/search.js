@@ -113,7 +113,8 @@ export default class Search extends React.Component {
       return (
         <div id="autosuggest" className="autosuggest">
           <ul>
-              <BlackScrollbars autoHeight autoHeightMax={400}>
+              <BlackScrollbars autoHeight autoHeightMax={400} style={{ "border-bottom-right-radius" : 8,
+            "border-bottom-left-radius" : 8}}>
                 {
                   filtered.map((item) =>
                     <li>

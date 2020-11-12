@@ -8,11 +8,22 @@ export default class BlackScrollbars extends Component {
         this.state = { top: 0 };
         this.handleUpdate = this.handleUpdate.bind(this);
         this.renderThumb = this.renderThumb.bind(this);
+        this.renderView = this.renderView.bind(this);
     }
 
     handleUpdate(values) {
         const { top } = values;
         this.setState({ top });
+    }
+
+    renderView({ style, ...props }) {
+        const customStyle = {
+            "border-bottom-right-radius" : 8,
+            "border-bottom-left-radius" : 8
+        };
+        return (
+            <div {...props} style={{ ...style, ...customStyle }}/>
+        );
     }
 
     renderThumb({ style, ...props }) {
@@ -32,6 +43,7 @@ export default class BlackScrollbars extends Component {
     render() {
         return (
             <Scrollbars
+                renderView={this.renderView}
                 renderThumbVertical={this.renderThumb}
                 onUpdate={this.handleUpdate}
                 {...this.props}/>
