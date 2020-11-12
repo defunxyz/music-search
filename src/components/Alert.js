@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { easings } from 'react-animation'
 
 const Notification = styled.div`
     margin-bottom: 0;
