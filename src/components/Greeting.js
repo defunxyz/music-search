@@ -8,7 +8,7 @@
  */
 
 import React, { useEffect, useState } from 'react';
-import styled from "styled-components"
+import styled from "styled-components";
 
 const Greetings = styled.div`
   color: #fff;
@@ -42,7 +42,12 @@ export default ({name}) => {
   }, []);
 
   return (
-    <Greetings className="rfloat">
-      <Text>{message}<Username>{name}</Username></Text>
-    </Greetings>);
+    <>
+    {name === "" && 
+      <Greetings className="rfloat">
+        <Text>{message}<Username>{name}</Username></Text>
+      </Greetings>
+    }
+    </>
+  );
 }

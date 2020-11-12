@@ -1,5 +1,6 @@
 import React from 'react';
 import { authSpotifyAPI, getSpotifyToken, searchSpotifyAPI } from '../api';
+import BlackScrollbars from "./BlackScrollbars";
 
 export default class Search extends React.Component {
     constructor() {
@@ -83,7 +84,7 @@ export default class Search extends React.Component {
       }
       else {
         await this.setState({ query: e.target.value });
-        let prepared = this.state.query.trim().replace(/\s/gi, "+");
+        let prepared = this.state.query.trim().replace(/(?<=\w)\s+(?=\w)|(\s+)/gi, "+");
         console.log(prepared);
         this.searchSpotify(prepared, "artist,album,track");
       }
@@ -112,24 +113,29 @@ export default class Search extends React.Component {
       return (
         <div id="autosuggest" className="autosuggest">
           <ul>
-            {
-              filtered.map((item) =>
-                <li>
-                  <div className="autocomplete-item" role="option" aria-selected="false">
-                  {item.images === undefined ? "" : item.images[2] === undefined ? "" : <img className="image" src={item.images[2].url} alt="" />}
-                  <div className="label">{item.name}</div>
-                  {item.type === "album" && <span className="type">{ 
-                  item.album_type.slice(0,1).toUpperCase() + item.album_type.slice(1, item.album_type.length) + " by " + item.artists[0].name}</span>}
+              <BlackScrollbars autoHeight autoHeightMax={400}>
+                {
+                  filtered.map((item) =>
+                    <li>
+                      <div className="autocomplete-item" role="option" aria-selected="false">
+                        {item.images === undefined ? "" : item.images[0] === undefined ? "" :
+                          <div className="image-ancor"><img className="image" src={item.images[0].url} alt="" /></div>}
+                        <div className="label">{item.name}</div>
 
-                  {item.type === "artist" && <span className="type">{ 
-                  item.type.slice(0,1).toUpperCase() + item.type.slice(1, item.type.length)}</span>}
+                        {item.type === "album" && <span className="type">
+                          {item.album_type.slice(0, 1).toUpperCase() + item.album_type.slice(1, item.album_type.length) +
+                            " by " + item.artists[0].name}</span>}
 
-                  {item.type === "track" && <span className="type">{ 
-                  item.type.slice(0,1).toUpperCase() + item.type.slice(1, item.type.length)}</span>}
-                  </div>
-                </li>
-              )
-            }
+                        {item.type === "artist" && <span className="type">{
+                          item.type.slice(0, 1).toUpperCase() + item.type.slice(1, item.type.length)}</span>}
+
+                        {item.type === "track" && <span className="type">{
+                          item.type.slice(0, 1).toUpperCase() + item.type.slice(1, item.type.length)}</span>}
+                      </div>
+                    </li>
+                  )
+                }
+              </BlackScrollbars>
           </ul>
         </div>
       )
