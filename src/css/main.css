@@ -341,42 +341,6 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 }
 
 /*
-   Overlay Container
-*/
-.overlay-container {
-    background: var(--base-white-color);
-    width: 100%;
-    height: 100%;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-items: center;
-    align-items: center;
-    text-align: center;
-    z-index: 999;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    color: #11100f;
-    overflow: hidden;
-}
-
-.overlay-container section {
-    margin-top: 1rem;
-    min-width: 960px;
-}
-
-.overlay-container section h3 {
-    font-weight: 200;
-}
-
-.overlay-container section h3 span {
-    font-weight: 500;
-}
-
-/*
    Entry-page 
    Statistics Container
 */
@@ -421,6 +385,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     font-weight: 300;
     color: var(--distinctive-gray-text);
 }
+
 
 @media screen and (max-width: 480px) {
     #root {

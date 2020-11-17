@@ -24,7 +24,8 @@ export default function filterList (q, list) {
     return list.filter(item => {
       return searchRegex.test(item.title);
     });
-  }
+}
+
 export default function convertNumber(number){
 		var nbr=number.toString();
 		var breakPoint=nbr.length%3;

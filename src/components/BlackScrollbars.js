@@ -18,8 +18,8 @@ export default class BlackScrollbars extends Component {
 
     renderView({ style, ...props }) {
         const customStyle = {
-            "border-bottom-right-radius" : 8,
-            "border-bottom-left-radius" : 8
+            borderBottomRightRadius : 8,
+            borderBottomLeftRadius : 8
         };
         return (
             <div {...props} style={{ ...style, ...customStyle }}/>
@@ -29,7 +29,7 @@ export default class BlackScrollbars extends Component {
     renderThumb({ style, ...props }) {
         const thumbStyle = {
             backgroundColor: `rgba(25, 25, 25, 1)`,
-            "border-radius": `4px`,
+            borderRadius: `4px`,
             opacity: 1,
             width: 6
         };

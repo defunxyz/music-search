@@ -5,6 +5,8 @@ import Search from "./components/Search";
 import PoweredBy from "./components/PoweredBy";
 import Cookies from 'universal-cookie';
 import Alert from './components/Alert';
+import StatisticsContainer from './components/StatisticsContainer';
+import GetNameDialog from './views/dialogs/GetNameDialog';
 
 const AppText = styled.h1`
   background-clip: text;
@@ -20,15 +22,51 @@ export default class App extends React.Component {
     super();
     this.state = {
       name: "",
-      cookie_notification: true
+      cookie_notification: true,
+      showDialog: false,
+      stats: [
+        {
+          total: "100M+",
+          label: "Songs"
+        },
+        {
+          total: "10M+",
+          label: "Albums"
+        },
+        {
+          total: "20M+",
+          label: "Songs"
+        },
+        {
+          total: "30M+",
+          label: "Songs"
+        }
+      ]
     };
   }
 
   componentDidMount = () => {
-    const cookie = new Cookies();
-    // cookie.set('username', 'Fisnik', { path: '/' });
+    document.addEventListener("keydown", this._handleKeyDown, false);
+    this.checkCookie();
+  }
 
+  _handleKeyDown = (e) => {
+    if(e.shiftKey && e.key === '?') {
+      e.preventDefault();
+      console.log("Shift + ? was pressed.");
+    }
+  }
+
+  hideCookieNotification = (e) => {
+    e.preventDefault();
+    this.setState({ cookie_notification: false });
+    this.setState({ showDialog: true });
+  }
+
+  checkCookie = () => {
+    const cookie = new Cookies();
     let username = cookie.get('username');
+    console.log(username);
 
     if (username) {
       this.setState({ cookie_notification: false });
@@ -37,43 +75,19 @@ export default class App extends React.Component {
     this.setState({ name: username });
   }
 
-  hideCookieNotification = (e) => {
-    e.preventDefault();
-    this.setState({ cookie_notification: false });
-  }
-
   render() {
-    const { name, cookie_notification } = this.state;
+    const { name, cookie_notification, showDialog } = this.state;
     return (
       <>
         <header className="clearfix">
           <AppText className="lfloat">
             Instantly Search artists, songs,<br />anytime, anywhere.
           </AppText>
-          <Greeting name={name} />
+          {name && <Greeting name={name} />}
         </header>
         <main>
           <Search />
-          <div className="statistics-container">
-            <div className="statistics-data">
-              <div className="stats">
-                <h3>90M+</h3>
-                <h4>Songs</h4>
-              </div>
-              <div className="stats">
-                <h3>90M+</h3>
-                <h4>Songs</h4>
-              </div>
-              <div className="stats">
-                <h3>90M+</h3>
-                <h4>Songs</h4>
-              </div>
-              <div className="stats">
-                <h3>90M+</h3>
-                <h4>Songs</h4>
-              </div>
-            </div>
-          </div>
+          <StatisticsContainer data={this.state.stats} />
           <PoweredBy />
         </main>
         {cookie_notification && <Alert message="We use cookies to ensure that we give you the best experience on our website."
@@ -81,6 +95,10 @@ export default class App extends React.Component {
         <footer>
           © 2020, Fisnik. <span role="img" aria-label="Red Heart">Made with ❤️</span>
         </footer>
+        <div id="dialogs">
+          {showDialog && 
+            <GetNameDialog updateState={this.checkCookie} />}
+        </div>
       </>
     );
   }

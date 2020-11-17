@@ -43,7 +43,7 @@ export default ({name}) => {
 
   return (
     <>
-    {name === "" && 
+    {name && 
       <Greetings className="rfloat">
         <Text>{message}<Username>{name}</Username></Text>
       </Greetings>
