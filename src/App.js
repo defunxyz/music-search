@@ -18,7 +18,7 @@ const AppText = styled.h1`
   padding: 1rem;
   font-size: 1.1rem;
   text-rendering: geometricPrecision;
-`
+`;
 
 export default class App extends React.Component {
   constructor(props) {
@@ -27,8 +27,6 @@ export default class App extends React.Component {
       name: "",
       cookie_notification: true,
       spotify_token: {},
-      showAbout: false,
-      showGetName: false,
       stats: [
         {
           total: "100M+",
@@ -51,8 +49,6 @@ export default class App extends React.Component {
 
     this._handleKeyDown = this._handleKeyDown.bind(this);
     this.hideCookieNotification = this.hideCookieNotification.bind(this);
-    this.displayAbout = this.displayAbout.bind(this);
-
   }
 
   componentDidMount = async () => {
@@ -89,12 +85,9 @@ export default class App extends React.Component {
     this.setState({ name: username });
   }
 
-  displayAbout = () => {
-    this.setState({ showAbout: !this.state.showAbout });
-  }
-
   render() {
     const { name, cookie_notification, stats, showGetName, showAbout } = this.state;
+
     return (
       <>
         <header className="clearfix">
@@ -112,7 +105,7 @@ export default class App extends React.Component {
           hideCookieNotification={this.hideCookieNotification} animate={cookie_notification === false ? true : false} />}
         <footer>
           © 2020, Fisnik. <span role="img" aria-label="Red Heart">Made with ❤️</span>
-          <div className="about" onClick={this.displayAbout}>
+          <div className="about" onClick={() => this.setState({ showAbout: !this.state.showAbout })}>
             <svg className="about-icon" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 23.625 23.625">
               <path d="M11.812,0C5.289,0,0,5.289,0,11.812s5.289,11.813,11.812,11.813s11.813-5.29,11.813-11.813
@@ -132,10 +125,12 @@ export default class App extends React.Component {
           </div>
         </footer>
         <div id="dialogs">
-            {showGetName && 
-            <GetNameDialog updateState={this.checkCookie} show={showGetName} hasShadowOverlay={true} /> }
-            {showAbout &&
-            <AboutDialog refresh={this.displayAbout} show={showAbout} hasShadowOverlay={true} /> }
+            <GetNameDialog updateState={() => 
+              {this.checkCookie(); this.setState({showGetName: !this.state.showGetName});}} 
+              show={showGetName ? true : false} 
+              hasShadowOverlay={true} /> 
+            <AboutDialog refresh={() => this.setState({ showAbout: !this.state.showAbout })} 
+            show={showAbout} hasShadowOverlay={true} />
         </div>
       </>
     );

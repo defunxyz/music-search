@@ -11,12 +11,10 @@ from "../../components/Dialog";
 
 export default class GetNameDialog extends React.Component{
     constructor(props) {
-        super(props);
+        super();
         this.state = {
-            hasShadowOverlay: props.hasShadowOverlay,
-            show: props.show,
             value: "",
-            submitDisabled: true 
+            submitDisabled: true,
         };
     }
 
@@ -34,20 +32,20 @@ export default class GetNameDialog extends React.Component{
         const cookie = new Cookies();
         const name = e.target.name.value;
         cookie.set('username', name, { path: '/' });
-        this.setState({ show: false });
         this.props.updateState();
     }
 
     render = () => {
-        const position = {'margin-top': 100}
-        const {value, submitDisabled, hasShadowOverlay} = this.state;
+        const position = {marginTop: 100}
+        const { hasShadowOverlay, show } = this.props;
+        const { value, submitDisabled } = this.state;
 
-        if(!this.state.show) {
-            return false;
+        if(show === false){
+            return null;
         }
         return (
-            <ModalDialog hasShadowOverlay={hasShadowOverlay}>
-                <Dialog id="welcomeDialog" style={position}>
+            <ModalDialog id={"welcome-dialog"} hasShadowOverlay={hasShadowOverlay} display={show}>
+                <Dialog id="welcomeDialog" marginTop={position} display={show}>
                     <DialogBar centerTitle={true} borderBottom={true} enableClose={false}>
                         <DialogTitle>Welcome</DialogTitle>
                     </DialogBar>

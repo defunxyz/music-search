@@ -2,7 +2,8 @@ import React from "react";
 import "./dialog.css";
 
 const Dialog = (props) => {
-    return (<div className="dialog" style={props.style}>
+    return (<div className={`dialog ${props.display ? '' : 'hidden'}`}  
+    style={{display: props.display ? 'block' : 'none'}}>
         {props.children}
     </div>)
 };
@@ -52,7 +53,8 @@ const DialogFooter = (props) => {
 
 const ModalDialog = (props) => {
     return (
-    <div className={`modal-dialog ${props.hasShadowOverlay ? 'overlay-effect' : ''}`}>
+    <div id={props.id} className={`modal-dialog ${props.hasShadowOverlay ? 'overlay-effect' : ''}`} 
+    style={{display: props.display ? 'block' : 'none'}}>
         {props.children}
     </div>
     );

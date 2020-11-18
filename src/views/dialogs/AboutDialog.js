@@ -11,11 +11,8 @@ from "../../components/Dialog";
 
 export default class AboutDialog extends React.Component {
     constructor(props) {
-        super(props);
-        this.state = {
-            hasShadowOverlay: props.hasShadowOverlay,
-            show: props.show
-        };
+        super();
+        this.state = {};
 
         this.handleClose = this.handleClose.bind(this);
         this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -40,13 +37,11 @@ export default class AboutDialog extends React.Component {
     }
 
     render = () => {
-        const {hasShadowOverlay} = this.state;
-        if(!this.state.show) {
-            return false;
-        }
+        const { hasShadowOverlay, show } = this.props;
+
         return (
-            <ModalDialog hasShadowOverlay={hasShadowOverlay}>
-                <Dialog id="about">
+            <ModalDialog id={"about-dialog"} hasShadowOverlay={hasShadowOverlay} display={show}>
+                <Dialog id="about" display={show}>
                     <DialogBar centerTitle={true} borderBottom={false}>
                         <DialogTitle>About</DialogTitle>
                         <DialogCloseBtn handleClose={this.handleClose} enableClose={true}></DialogCloseBtn>
