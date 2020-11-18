@@ -36,7 +36,6 @@ export default class GetNameDialog extends React.Component{
     }
 
     render = () => {
-        const position = {marginTop: 100}
         const { hasShadowOverlay, show } = this.props;
         const { value, submitDisabled } = this.state;
 
@@ -45,7 +44,7 @@ export default class GetNameDialog extends React.Component{
         }
         return (
             <ModalDialog id={"welcome-dialog"} hasShadowOverlay={hasShadowOverlay} display={show}>
-                <Dialog id="welcomeDialog" marginTop={position} display={show}>
+                <Dialog id="welcomeDialog" margintop={100} display={show}>
                     <DialogBar centerTitle={true} borderBottom={true} enableClose={false}>
                         <DialogTitle>Welcome</DialogTitle>
                     </DialogBar>

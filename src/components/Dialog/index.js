@@ -2,8 +2,12 @@ import React from "react";
 import "./dialog.css";
 
 const Dialog = (props) => {
-    return (<div className={`dialog ${props.display ? '' : 'hidden'}`}  
-    style={{display: props.display ? 'block' : 'none'}}>
+    var dialogStyle = {
+        display: props.display ? 'block' : 'none',
+        marginTop: props.margintop
+    };
+    return (<div className={`dialog`}  
+    style={dialogStyle}>
         {props.children}
     </div>)
 };
