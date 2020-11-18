@@ -87,7 +87,6 @@ export default class Search extends React.Component {
       else {
         await this.setState({ query: e.target.value });
         let prepared = this.state.query.trim().replace(/(?<=\w)\s+(?=\w)|(\s+)/gi, "+");
-        console.log(prepared);
         this.searchSpotify(prepared, "artist,album,track");
       }
     }

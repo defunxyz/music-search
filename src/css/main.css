@@ -147,6 +147,42 @@ footer span {
     font-weight: 500;
 }
 
+footer .about {
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+}
+
+footer .about-icon {
+    width: 15px;
+    height: 15px;
+    margin-left: 4px;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 50%;
+    filter: invert(59%) sepia(11%) saturate(200%) saturate(135%) hue-rotate(176deg) brightness(96%) contrast(94%);
+}
+
+footer .about-icon:hover .hover-effect {
+    opacity: 1;
+}
+
+footer .hover-effect {
+    border-radius: 50%;
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    bottom: -8px;
+    left: 0;
+    right: -1px;
+    top: 15px;
+    pointer-events: none;
+    opacity: 0;
+    background-color: rgba(19, 11, 11, 0.79);
+    transition: opacity 100ms ease-in;
+}
+
 section {
     z-index: 1;
     display: block;
@@ -386,6 +422,13 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     color: var(--distinctive-gray-text);
 }
 
+.author {
+    font-weight: 700;
+}
+
+.title {
+    font-weight: 400;
+}
 
 @media screen and (max-width: 480px) {
     #root {

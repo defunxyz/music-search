@@ -1,10 +1,11 @@
 import React from "react";
 import BlackScrollbars from "./BlackScrollbars";
+import SearchItem from "./Data/SearchItem";
 
-export default ({ matches, query }) => {
+export default (props) => {
     
-    const regex = new RegExp(query, 'gi');
-    const filtered = matches.filter(match => regex.test(match.name));
+    const regex = new RegExp(props.query, 'gi');
+    const filtered = props.matches.filter(match => regex.test(match.name));
     
     return (
         <div id="autosuggest" className="autosuggest">
@@ -15,22 +16,8 @@ export default ({ matches, query }) => {
                 }}>
                     {
                         filtered.map((item) =>
-                            <li id={item.id} key={item.id}>
-                                <div className="autocomplete-item" role="option" aria-selected="false">
-                                    {item.images === undefined ? "" : item.images[0] === undefined ? "" :
-                                        <div className="image-ancor"><img className="image" src={item.images[0].url} alt="" /></div>}
-                                    <div className="label">{item.name}</div>
-
-                                    {item.type === "album" && <span className="type">
-                                        {item.album_type.slice(0, 1).toUpperCase() + item.album_type.slice(1, item.album_type.length) +
-                                            " by " + item.artists[0].name}</span>}
-
-                                    {item.type === "artist" && <span className="type">{
-                                        item.type.slice(0, 1).toUpperCase() + item.type.slice(1, item.type.length)}</span>}
-
-                                    {item.type === "track" && <span className="type">{
-                                        item.type.slice(0, 1).toUpperCase() + item.type.slice(1, item.type.length)}</span>}
-                                </div>
+                            <li id={item.id} key={item.id} data-type={item.type}>
+                                <SearchItem data={item} />
                             </li>
                         )
                     }

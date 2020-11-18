@@ -11,10 +11,10 @@ from "../../components/Dialog";
 
 export default class GetNameDialog extends React.Component{
     constructor(props) {
-        super();
+        super(props);
         this.state = {
-            hasShadowOverlay: true,
-            show: true,
+            hasShadowOverlay: props.hasShadowOverlay,
+            show: props.show,
             value: "",
             submitDisabled: true 
         };
@@ -40,13 +40,13 @@ export default class GetNameDialog extends React.Component{
 
     render = () => {
         const position = {'margin-top': 100}
-        const {value, submitDisabled} = this.state;
+        const {value, submitDisabled, hasShadowOverlay} = this.state;
 
         if(!this.state.show) {
             return false;
         }
         return (
-            <ModalDialog hasShadowOverlay={true}>
+            <ModalDialog hasShadowOverlay={hasShadowOverlay}>
                 <Dialog id="welcomeDialog" style={position}>
                     <DialogBar centerTitle={true} borderBottom={true} enableClose={false}>
                         <DialogTitle>Welcome</DialogTitle>

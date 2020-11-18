@@ -13,13 +13,18 @@ const DialogBar = (props) => {
         ${props.centerTitle ? 'center-title' : ''} 
         ${props.borderBottom ? 'borderBottom' : ''} clearfix`}>
             {props.children}
-            {props.enableClose && <svg class="close-btn rfloat" height="30px" width="30px" viewBox="0 0 24 24">
-                <line stroke="#bec2c9" stroke-linecap="round" stroke-width="2" x1="6" x2="18" y1="6" y2="18"></line>
-                <line stroke="#bec2c9" stroke-linecap="round" stroke-width="2" x1="6" x2="18" y1="18" y2="6"></line>
-            </svg>}
         </div>
     )
 };
+
+const DialogCloseBtn = (props) => {
+    return (<>
+                {props.enableClose && <svg onClick={props.handleClose} className="close-btn rfloat" height="30px" width="30px" viewBox="0 0 24 24">
+                <line stroke="#bec2c9" strokeLinecap="round" strokeWidth="2" x1="6" x2="18" y1="6" y2="18"></line>
+                <line stroke="#bec2c9" strokeLinecap="round" strokeWidth="2" x1="6" x2="18" y1="18" y2="6"></line>
+            </svg>}
+    </>);
+}
 
 const DialogTitle = (props) => {
     return (
@@ -57,6 +62,7 @@ export {
     Dialog, 
     DialogBar,
     DialogTitle,
+    DialogCloseBtn,
     DialogBody,
     DialogFooter,
     ModalDialog

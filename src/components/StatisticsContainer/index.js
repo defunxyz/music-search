@@ -10,7 +10,7 @@ export default (props) => {
     return (
         <div className="statistics-container">
             <div className="statistics-data">
-                {data.map(o => (
+                {data.map((o) => (
                     <div className="stats">
                         <h3>{o.total}</h3>
                         <h4>{o.label}</h4>

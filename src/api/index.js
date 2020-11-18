@@ -11,11 +11,16 @@ var querystring = require('querystring');
 
 // Endpoints ?client_id=${APIKEY}&response_type=code
 const Napster_Auth_Endpoint = `https://api.napster.com/oauth/access_token`;
+const Napster_Search_Endpoint = (key, term) => `http://api.napster.com/v2.2/search/verbose?apikey=${key}&query=${term}`;
 
 const Spotify_Auth_Endpoint = `https://accounts.spotify.com/api/token`;
 const Spotify_Search_Endpoint = `https://api.spotify.com/v1/search?`;
 const Spotify_Artists_Albums_Endpoint = (id) => `https://api.spotify.com/v1/artists/${id}/albums`;
-const Napster_Search_Endpoint = (key, term) => `http://api.napster.com/v2.2/search/verbose?apikey=${key}&query=${term}`;
+const Spotify_Artist_Endpoint = (id) => `https://api.spotify.com/v1/artists/${id}`;
+const Spotify_Track_Endpoint = (id) => `https://api.spotify.com/v1/tracks/${id}`;
+
+const Wikipedia_Extract_Endpoint = (title, format) => 
+`https://en.wikipedia.org/w/api.php?action=query&origin=*&prop=extracts&format=${format}&exintro=&titles=${title}`;
 
 // Tokens
 let spotify_token = {};
@@ -123,3 +128,44 @@ export const getArtistAlbumSpotify = (id) => {
  * @returns {Object} Spotify Token Data
  */
 export const getSpotifyToken = () => { return spotify_token; };
+
+export const getArtistSpotify = async (id) => {
+    return axios({
+        url: Spotify_Artist_Endpoint(id),
+        method: 'get',
+        headers: {
+            'Accept':'application/json',
+            'Authorization': 'Bearer ' + spotify_token.access_token
+        }
+    }).then(response => {
+        let data = JSON.parse(JSON.stringify(response.data));
+        return data;
+    }).catch(error => {
+        return error;
+    });
+}
+
+export const getTrackSpotify = async (id) => {
+    return axios({
+        url: Spotify_Track_Endpoint(id),
+        method: 'get',
+        headers: {
+            'Accept':'application/json',
+            'Authorization': 'Bearer ' + spotify_token.access_token
+        }
+    }).then(response => {
+        let data = JSON.parse(JSON.stringify(response.data));
+        return data;
+    }).catch(error => {
+        return error;
+    });
+}
+
+export const fetchExtractFromWikipedia = async (title, format) => {
+    return axios.get(Wikipedia_Extract_Endpoint(title, format)).then(response => {
+      let data = JSON.parse(JSON.stringify(response.data));
+      let path = data.query.pages;
+      let id = Object.keys(path)[0];
+      return {extract: path[id].extract};
+    });
+  };

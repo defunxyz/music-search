@@ -7,7 +7,7 @@
  * @copyright 2020 Jerry
  */
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from "styled-components";
 
 const Greetings = styled.div`
@@ -21,33 +21,49 @@ const Username = styled.span`
 font-weight: 500;
 `
 
-export default ({name}) => {
-  const [message, setMessage] = useState();
+export default class Greeting extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: props.name,
+      message: ""
+    };
+  }
 
-  useEffect(() => {
-    let t =   new Date().getHours();
+  componentDidMount = () => {
+    setInterval(this.timeOfDay(), 1000);
+  }
+
+  timeOfDay = () => {
+    let t = new Date().getHours();
+    let message = "";
 
     if (t < 12 && t > 4) {
-      setMessage("Good morning, ");
+      message = "Good morning, ";
     }
     else if (t === 12) {
-      setMessage("Noon, ");
+      message = "Noon, ";
     }
     else if (t < 17 && t > 12) {
-      setMessage("Good afternoon, ");
+      message = "Good afternoon, ";
     }
     else {
-      setMessage("Good evening, ");
+      message = "Good evening, ";
     }
-  }, []);
 
-  return (
-    <>
-    {name && 
-      <Greetings className="rfloat">
-        <Text>{message}<Username>{name}</Username></Text>
-      </Greetings>
-    }
-    </>
-  );
+    this.setState({ message: message })
+  }
+
+  render = () => {
+    const {name, message} = this.state;
+    return (
+      <>
+      {name && 
+        <Greetings className="rfloat">
+          <Text>{message}<Username>{name}</Username></Text>
+        </Greetings>
+      }
+      </>
+    );
+  }
 }
