@@ -9,7 +9,7 @@ ModalDialog,
 DialogBar}
 from "../../components/Dialog";
 
-export default class AboutDialog extends React.Component {
+export default class KeyboardDialog extends React.Component {
     constructor(props) {
         super();
         this.state = {};
@@ -29,31 +29,27 @@ export default class AboutDialog extends React.Component {
     handleClose = (e) => {
         e.preventDefault();
         this.setState({ show: false });
-        this.props.refresh();
+        this.props.reset();
     }
 
     handleKeyDown = (e) => {
         if(e.keyCode === 27) {
             this.setState({ show: false });
-            this.props.refresh();
+            this.props.reset();
         }
     }
 
     render = () => {
-        const { hasShadowOverlay, show} = this.props;
+        const { hasShadowOverlay, show } = this.props;
 
         return (
-            <ModalDialog id={"about-dialog"} hasShadowOverlay={hasShadowOverlay} display={show}>
-                <Dialog id="about" display={show}>
+            <ModalDialog id={"keyboard-dialog"} hasShadowOverlay={hasShadowOverlay} display={show}>
+                <Dialog id="keyboard" display={show}>
                     <DialogBar centerTitle={true} borderBottom={false}>
-                        <DialogTitle>About</DialogTitle>
+                        <DialogTitle>Keyboard Shortcuts</DialogTitle>
                         <DialogCloseBtn handleClose={this.handleClose} enableClose={true}></DialogCloseBtn>
                     </DialogBar>
                     <DialogBody>
-                        <div id="authors">
-                            <h4 className="author">Fisnik <span className="title">[[nerd]]</span></h4>
-                            <h4 className="author">Jerry <span className="title">[[mathematician]]</span></h4>
-                        </div>
                     </DialogBody>
                     <DialogFooter></DialogFooter>
                 </Dialog>

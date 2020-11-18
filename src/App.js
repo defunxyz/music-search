@@ -8,6 +8,7 @@ import Alert from './components/Alert';
 import StatisticsContainer from './components/StatisticsContainer';
 import GetNameDialog from './views/dialogs/GetNameDialog';
 import AboutDialog from './views/dialogs/AboutDialog';
+import KeyboardDialog from './views/dialogs/KeyboardDialog';
 
 import {getSpotifyToken, authSpotifyAPI} from "./api";
 
@@ -64,7 +65,7 @@ export default class App extends React.Component {
   _handleKeyDown = (e) => {
     if(e.shiftKey && e.key === '?') {
       e.preventDefault();
-      console.log("Shift + ? was pressed.");
+      this.setState({ showHelp: true });
     }
   }
 
@@ -86,7 +87,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { name, cookie_notification, stats, showGetName, showAbout } = this.state;
+    const { name, cookie_notification, stats, showGetName, showAbout, showHelp } = this.state;
 
     return (
       <>
@@ -129,8 +130,10 @@ export default class App extends React.Component {
               {this.checkCookie(); this.setState({showGetName: !this.state.showGetName});}} 
               show={showGetName ? true : false} 
               hasShadowOverlay={true} /> 
-            <AboutDialog refresh={() => this.setState({ showAbout: !this.state.showAbout })} 
-            show={showAbout} hasShadowOverlay={true} />
+            {showAbout && <AboutDialog refresh={() => this.setState({ showAbout: !this.state.showAbout })} 
+            show={showAbout} hasShadowOverlay={true} /> }
+            {showHelp && <KeyboardDialog reset={() => this.setState({ showHelp: !this.state.showHelp })} 
+            show={showHelp} hasShadowOverlay={true} /> }
         </div>
       </>
     );
