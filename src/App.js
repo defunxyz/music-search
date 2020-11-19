@@ -48,7 +48,6 @@ export default class App extends React.Component {
       ]
     };
 
-    this._handleKeyDown = this._handleKeyDown.bind(this);
     this.hideCookieNotification = this.hideCookieNotification.bind(this);
   }
 

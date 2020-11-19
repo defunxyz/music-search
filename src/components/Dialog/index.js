@@ -15,7 +15,7 @@ const Dialog = (props) => {
 const DialogBar = (props) => {
     return (
         <div className={`dialog-bar 
-        ${props.centerTitle ? 'center-title' : ''} 
+        ${props.centerTitle ? 'center-title' : ''}
         ${props.borderBottom ? 'borderBottom' : ''} clearfix`}>
             {props.children}
         </div>

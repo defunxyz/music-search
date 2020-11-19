@@ -15,7 +15,7 @@ export default class AboutDialog extends React.Component {
         this.state = {};
 
         this.handleClose = this.handleClose.bind(this);
-        this.handleKeyDown = this.handleKeyDown.bind(this);
+
     }
 
     componentDidMount = () => {
@@ -23,7 +23,7 @@ export default class AboutDialog extends React.Component {
     }
 
     componentWillUnmount = () => {
-        document.removeEventListener("keydown", this, false);
+        document.removeEventListener("keydown", this.handleKeyDown);
     }
 
     handleClose = (e) => {

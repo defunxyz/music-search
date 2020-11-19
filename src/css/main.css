@@ -430,6 +430,51 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     font-weight: 400;
 }
 
+/* Keyboard: */
+.kbd > p {
+    margin-bottom: .4rem;
+    display: inline-flex;
+}
+
+.kbd ul {
+    list-style-type: none;
+}
+
+.kbd ul li {
+    margin-bottom: .5rem;
+}
+
+.shortcut {
+    display: inline-block;
+}
+
+.explain {
+    display: inline-flex;
+    width: 300px;
+    word-wrap: break-word;
+    word-break: break-all;
+    margin-right: 1rem;
+}
+
+kbd {
+    background-color: rgb(206, 206, 206);
+    border-radius: .285714286em;
+    color: black;
+    font: 700 .875em/1.5 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    padding: .214285714em .642857143em;
+    display: inline-flex;
+}
+
+kbd span.down-key, 
+kbd span.up-key {
+    font-weight: 900;
+    font-size: 24px;
+}
+
+kbd + span {
+    margin: .5rem;
+}
+
 @media screen and (max-width: 480px) {
     #root {
         display: block;

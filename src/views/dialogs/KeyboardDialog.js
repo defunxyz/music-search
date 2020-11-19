@@ -15,7 +15,6 @@ export default class KeyboardDialog extends React.Component {
         this.state = {};
 
         this.handleClose = this.handleClose.bind(this);
-        this.handleKeyDown = this.handleKeyDown.bind(this);
     }
 
     componentDidMount = () => {
@@ -23,7 +22,7 @@ export default class KeyboardDialog extends React.Component {
     }
 
     componentWillUnmount = () => {
-        document.removeEventListener("keydown", this, false);
+        document.removeEventListener("keydown", this.handleKeyDown);
     }
 
     handleClose = (e) => {
@@ -45,11 +44,31 @@ export default class KeyboardDialog extends React.Component {
         return (
             <ModalDialog id={"keyboard-dialog"} hasShadowOverlay={hasShadowOverlay} display={show}>
                 <Dialog id="keyboard" display={show}>
-                    <DialogBar centerTitle={true} borderBottom={false}>
+                    <DialogBar centerTitle={true} borderBottom={true}>
                         <DialogTitle>Keyboard Shortcuts</DialogTitle>
                         <DialogCloseBtn handleClose={this.handleClose} enableClose={true}></DialogCloseBtn>
                     </DialogBar>
                     <DialogBody>
+                        <div className="kbd">
+                            <ul>
+                                <li>
+                                    <div className="explain">Opens this dialog</div>
+                                    <div className="shortcut"><kbd>SHIFT</kbd><span>+</span><kbd>?</kbd></div>
+                                </li>
+                                <li>
+                                    <div className="explain">Close a dialog</div>
+                                    <div className="shortcut"><kbd>Esc</kbd></div>
+                                </li>
+                                <li>
+                                    <div className="explain">Move up and down in autosuggestion list</div>
+                                    <dvi className="shortcut">
+                                        <kbd><span className="up-key">&#8593;</span></kbd>
+                                        <span></span>
+                                        <kbd><span className="down-key">&#8595;</span></kbd>
+                                    </dvi>
+                                </li>
+                            </ul>
+                        </div>
                     </DialogBody>
                     <DialogFooter></DialogFooter>
                 </Dialog>
