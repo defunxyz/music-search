@@ -43,7 +43,7 @@ export default class AboutDialog extends React.Component {
         const { hasShadowOverlay, show} = this.props;
 
         return (
-            <ModalDialog id={"about-dialog"} hasShadowOverlay={hasShadowOverlay} display={show}>
+            <ModalDialog id={"about-dialog"} hasShadowOverlay={hasShadowOverlay} blurEffect={false} display={show}>
                 <Dialog id="about" display={show}>
                     <DialogBar centerTitle={true} borderBottom={false}>
                         <DialogTitle>About</DialogTitle>

@@ -57,7 +57,7 @@ const DialogFooter = (props) => {
 
 const ModalDialog = (props) => {
     return (
-    <div id={props.id} className={`modal-dialog ${props.hasShadowOverlay ? 'overlay-effect' : ''}`} 
+    <div id={props.id} className={`modal-dialog ${props.hasShadowOverlay ? 'overlay-effect' : ''} ${props.blurEffect ? 'blur-effect' : ''}`}
     style={{display: props.display ? 'block' : 'none'}}>
         {props.children}
     </div>
