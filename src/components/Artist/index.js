@@ -24,9 +24,14 @@ const Artist = ({data, text}) => {
                 <span className="infom">Followers</span>
             </div>
         </div>
+        {text.extract && 
         <div className="artist-bio">
             <div dangerouslySetInnerHTML={{ __html: text.extract }}></div>
-        </div>
+        </div>}
+        {text.extract === undefined &&
+        <div className="notice">
+            No artist bios was found for this artist.
+        </div>}
         </>
     );
 };

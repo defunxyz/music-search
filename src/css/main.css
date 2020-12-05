@@ -489,6 +489,16 @@ kbd + span {
     margin-left: 45%;
 }
 
+.notice {
+    padding: .5rem;
+    background: #bfc0c1;
+    border-radius: 4px;
+    text-align: center;
+    border: 1px solid #ced0d4;
+    color: #1c1e21;
+    margin-top: 20px;
+}
+
 @media screen and (max-width: 480px) {
     #root {
         display: block;

@@ -88,9 +88,8 @@ export default class App extends React.Component {
   }
 
   handleArtist = (data, extract) => {
-    console.log(data);
+    console.log(extract);
     this.setState({ data: data, wiki: extract, showArtist: true });
-    console.log(this.state);
   }
 
   render() {
