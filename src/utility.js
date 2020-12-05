@@ -14,3 +14,7 @@ export default function convertNumber(number){
 		}
 		return result;
 }
+
+export function capitalizefl(string) {
+	return string.charAt(0).toUpperCase() + string.slice(1);
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import "./index.css";
 import convertNumber from "../../utility";
+import {capitalizefl} from "../../utility";
 
 const Artist = ({data, text}) => {
     return(
@@ -11,7 +12,9 @@ const Artist = ({data, text}) => {
         </div>
         <div className="genres">
             <ul>
-
+                {data.genres.slice(0, 5).map((genre) => {
+                    return <li>{capitalizefl(genre)}</li>
+                })}
             </ul>
         </div>
         <div className="artist-stats">

@@ -40,7 +40,7 @@ export default class ArtistDialog extends React.Component {
         const  { hasShadowOverlay, show } = this.props;
         return (
             <ModalDialog hasShadowOverlay={hasShadowOverlay} display={show}>
-                <Dialog borderBottom={false} enableClose={true} display={show}>
+                <Dialog margintop={15} borderBottom={false} enableClose={true} display={show}>
                     <DialogBar>
                         <div className="card-invertcut"></div>
                         <DialogCloseBtn handleClose={this.handleClose} enableClose={true}></DialogCloseBtn>
