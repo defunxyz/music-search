@@ -162,7 +162,8 @@ export const getTrackSpotify = async (id) => {
 }
 
 export const fetchExtractFromWikipedia = async (title, format) => {
-    return axios.get(Wikipedia_Extract_Endpoint(title, format)).then(response => {
+    let prepared = title.trim().replace(/(?<=\w)\s+(?=\w)|(\s+)/gi, "+");
+    return axios.get(Wikipedia_Extract_Endpoint(prepared, format)).then(response => {
       let data = JSON.parse(JSON.stringify(response.data));
       let path = data.query.pages;
       let id = Object.keys(path)[0];

@@ -11,6 +11,7 @@ import AboutDialog from './views/dialogs/AboutDialog';
 import KeyboardDialog from './views/dialogs/KeyboardDialog';
 
 import {getSpotifyToken, authSpotifyAPI} from "./api";
+import ArtistDialog from "./views/dialogs/ArtistDialog";
 
 const AppText = styled.h1`
   background-clip: text;
@@ -28,6 +29,7 @@ export default class App extends React.Component {
       name: "",
       cookie_notification: true,
       spotify_token: {},
+      data: {},
       stats: [
         {
           total: "100M+",
@@ -85,8 +87,15 @@ export default class App extends React.Component {
     this.setState({ name: username });
   }
 
+  handleArtist = (data, extract) => {
+    console.log(data);
+    this.setState({ data: data, wiki: extract, showArtist: true });
+    console.log(this.state);
+  }
+
   render() {
-    const { name, cookie_notification, stats, showGetName, showAbout, showHelp } = this.state;
+
+    const { name, cookie_notification, stats, showGetName, showAbout, showHelp, showArtist } = this.state;
 
     return (
       <>
@@ -97,7 +106,7 @@ export default class App extends React.Component {
           {name && <Greeting name={name} />}
         </header>
         <main>
-          <Search />
+          <Search handleArtist={this.handleArtist} />
           <StatisticsContainer data={stats} />
           <PoweredBy />
         </main>
@@ -129,10 +138,16 @@ export default class App extends React.Component {
               {this.checkCookie(); this.setState({showGetName: !this.state.showGetName});}} 
               show={showGetName ? true : false} 
               hasShadowOverlay={true} /> 
+            
             {showAbout && <AboutDialog refresh={() => this.setState({ showAbout: !this.state.showAbout })} 
             show={showAbout} hasShadowOverlay={true} /> }
+            
             {showHelp && <KeyboardDialog reset={() => this.setState({ showHelp: !this.state.showHelp })} 
             show={showHelp} hasShadowOverlay={true} /> }
+            
+            {showArtist && <ArtistDialog data={this.state.data} 
+            text={this.state.wiki} refresh={() => this.setState({ showArtist: !this.state.showArtist })} 
+            show={showArtist} hasShadowOverlay={true} /> }
         </div>
       </>
     );

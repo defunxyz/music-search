@@ -13,9 +13,7 @@ export default class AboutDialog extends React.Component {
     constructor(props) {
         super();
         this.state = {};
-
         this.handleClose = this.handleClose.bind(this);
-
     }
 
     componentDidMount = () => {

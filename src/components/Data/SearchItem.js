@@ -1,12 +1,17 @@
 import React from "react";
-//import {getArtistSpotify} from "../../api";
+import {getArtistSpotify, fetchExtractFromWikipedia} from "../../api";
 
-const SearchItem = ({data}) => {
+const SearchItem = (props) => {
+    const {data} = props;
 
     const handleClick = async (e) => {
         e.preventDefault();
-        console.log(e.currentTarget.parentNode.id);
-        console.log(e.currentTarget.parentNode.attributes.getNamedItem('data-type').value);
+        
+        const retrieved = await getArtistSpotify(e.currentTarget.parentNode.id);
+        const extract = await fetchExtractFromWikipedia(retrieved.name, 'json');
+        
+        props.handleArtist(retrieved, extract);
+        props.clear();
     }
 
     const handleKeyDown = async (e) => {

@@ -3,8 +3,8 @@ import { authSpotifyAPI, getSpotifyToken, searchSpotifyAPI } from '../api';
 import Autosuggest from './Autosuggest';
 
 export default class Search extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             query: "",
             cursor: 0,
@@ -15,6 +15,10 @@ export default class Search extends React.Component {
         };
 
         this.handleChange = this.handleChange.bind(this);
+    }
+
+    clear = () => {
+      this.setState({ query: "", matches: [] });
     }
 
     componentDidMount(){
@@ -108,7 +112,7 @@ export default class Search extends React.Component {
                   onChange={e => this.handleChange(e)} />
               </form>
             </div>
-            <Autosuggest matches={matches} query={query} />
+            <Autosuggest matches={matches} query={query} handleArtist={this.props.handleArtist} clear={this.clear} />
           </section>
         );
     }

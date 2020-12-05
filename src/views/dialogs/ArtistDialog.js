@@ -1,31 +1,53 @@
 import React from "react";
 import 
-{ Dialog, 
-DialogTitle,
+{ Dialog,
 DialogBody,
 DialogFooter,
 ModalDialog, 
-DialogBar}
+DialogBar, DialogCloseBtn}
 from "../../components/Dialog";
+import Artist from "../../components/Artist";
 
 export default class ArtistDialog extends React.Component {
     constructor(props) {
         super();
-        this.state = {
-            hasShadowOverlay: props.hasShadowOverlay,
-            show: props.show,
-        };
+        this.state = {};
+        this.handleClose = this.handleClose.bind(this);
+    }
+
+    componentDidMount = () => {
+        document.addEventListener("keydown", this.handleKeyDown, false);
+    }
+
+    componentWillUnmount = () => {
+        document.removeEventListener("keydown", this.handleKeyDown);
+    }
+
+    handleClose = (e) => {
+        e.preventDefault();
+        this.setState({ show: false });
+        this.props.refresh();
+    }
+
+    handleKeyDown = (e) => {
+        if(e.keyCode === 27) {
+            this.setState({ show: false });
+            this.props.refresh();
+        }
     }
 
     render = () => {
-        const {hasShadowOverlay} = this.state;
+        const  { hasShadowOverlay, show } = this.props;
         return (
-            <ModalDialog hasShadowOverlay={hasShadowOverlay}>
-                <Dialog borderBottom={false} enableClose={true}>
+            <ModalDialog hasShadowOverlay={hasShadowOverlay} display={show}>
+                <Dialog borderBottom={false} enableClose={true} display={show}>
                     <DialogBar>
-                        <DialogTitle></DialogTitle>
+                        <div className="card-invertcut"></div>
+                        <DialogCloseBtn handleClose={this.handleClose} enableClose={true}></DialogCloseBtn>
                     </DialogBar>
-                    <DialogBody></DialogBody>
+                    <DialogBody>
+                        <Artist data={this.props.data} text={this.props.text} />
+                    </DialogBody>
                     <DialogFooter></DialogFooter>
                 </Dialog>
             </ModalDialog>
