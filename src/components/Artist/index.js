@@ -1,5 +1,6 @@
 import React from "react";
 import "./index.css";
+import convertNumber from "../../utility";
 
 const Artist = ({data, text}) => {
     return(
@@ -19,7 +20,7 @@ const Artist = ({data, text}) => {
                 <span className="infom">Popularity</span>
             </div>
             <div className="stat">
-                <span className="number">{data.followers.total}</span>
+                <span className="number">{convertNumber(data.followers.total)}</span>
                 <span className="infom">Followers</span>
             </div>
         </div>
