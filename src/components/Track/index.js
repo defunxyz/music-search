@@ -1,4 +1,5 @@
 import React from "react";
+import { Scrollbars } from 'react-custom-scrollbars';
 import "./index.css";
 
 const Track = (props) => {
@@ -15,7 +16,9 @@ const Track = (props) => {
             </div>
         </div>
         <div className="lyrics">
-            <div dangerouslySetInnerHTML={{ __html: lyrics }}></div>
+            <Scrollbars style={{ height: 200 }}>
+                <div dangerouslySetInnerHTML={{ __html: lyrics }}></div>
+            </Scrollbars>
         </div>
         </div>
     );

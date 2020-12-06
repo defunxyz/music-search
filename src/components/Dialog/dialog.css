@@ -58,6 +58,7 @@
 
 .center-title {
     text-align: center;
+    text-transform: capitalize;
 }
 
 .close-btn {

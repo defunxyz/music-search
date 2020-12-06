@@ -1,7 +1,8 @@
 import React from "react";
+import { Scrollbars } from 'react-custom-scrollbars';
 import "./index.css";
 import convertNumber from "../../utility";
-import {capitalizefl} from "../../utility";
+import {capitalize} from "../../utility";
 
 const Artist = ({data, text}) => {
     return(
@@ -13,7 +14,7 @@ const Artist = ({data, text}) => {
         <div className="genres">
             <ul>
                 {data.genres.slice(0, 5).map((genre) => {
-                    return <li>{capitalizefl(genre)}</li>
+                    return <li>{capitalize(genre)}</li>
                 })}
             </ul>
         </div>
@@ -29,7 +30,9 @@ const Artist = ({data, text}) => {
         </div>
         {text.extract && 
         <div className="artist-bio">
-            <div dangerouslySetInnerHTML={{ __html: text.extract }}></div>
+            <Scrollbars style={{ height: 200 }}>
+                <div dangerouslySetInnerHTML={{ __html: text.extract }}></div>
+            </Scrollbars>
         </div>}
         {text.extract === undefined &&
         <div className="notice">

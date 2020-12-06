@@ -1,10 +1,15 @@
 import React from "react";
+import { Scrollbars } from 'react-custom-scrollbars';
 import "./index.css";
 
 const Album = (props) => {
     const { data, result } = props;
-    // eslint-disable-next-line
-    let lyrics = result.result.track.text.replace(new RegExp('\r?\n','g'), '<br />');
+    let lyrics = "";
+    if(result !== undefined) {
+        // eslint-disable-next-line
+        lyrics = result.result.track.text.replace(new RegExp('\r?\n','g'), '<br />');
+    }
+    
     return(
         <div className="album">
         <div className="album-cover">
@@ -20,9 +25,11 @@ const Album = (props) => {
         <div className="album-info">
             
         </div>
-        <div className="lyrics">
-            <div dangerouslySetInnerHTML={{ __html: lyrics }}></div>
-        </div>
+        {result !== undefined && <div className="lyrics">
+            <Scrollbars style={{ height: 200 }}>
+                <div dangerouslySetInnerHTML={{ __html: lyrics }}></div>
+            </Scrollbars>
+        </div>}
         </div>
     );
 };

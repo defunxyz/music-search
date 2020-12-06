@@ -38,17 +38,17 @@ export default class AlbumDialog extends React.Component {
     }
 
     render = () => {
-        const  { hasShadowOverlay, show } = this.props;
+        const  { hasShadowOverlay, show, data } = this.props;
         return (
             <ModalDialog hasShadowOverlay={hasShadowOverlay} display={show}>
                 <Dialog margintop={15} borderBottom={false} enableClose={true} display={show}>
                     <DialogBar centerTitle={true}>
-                        <DialogTitle>Album</DialogTitle>
+                    <DialogTitle>{data.album_type}</DialogTitle>
                         <DialogCloseBtn handleClose={this.handleClose} 
                         enableClose={true}></DialogCloseBtn>
                     </DialogBar>
                     <DialogBody>
-                        <Album data={this.props.data} result={this.props.lyrics} />
+                        <Album data={data} result={this.props.lyrics} />
                     </DialogBody>
                     <DialogFooter></DialogFooter>
                 </Dialog>

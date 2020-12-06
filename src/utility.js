@@ -15,6 +15,7 @@ export default function convertNumber(number){
 		return result;
 }
 
-export function capitalizefl(string) {
-	return string.charAt(0).toUpperCase() + string.slice(1);
+export const capitalize = (s) => {
+	if (typeof s !== 'string') return ''
+	return s.charAt(0).toUpperCase() + s.slice(1)
 }

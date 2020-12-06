@@ -500,9 +500,21 @@ kbd + span {
 }
 
 .lyrics {
-    height: 300px;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    height: 220px;
+    overflow: hidden;
+    color: #aeadad;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid rgb(94, 94, 94);
+    padding: .4rem;
+    padding-right: 0;
+}
+
+hr {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    margin-left: -15px;
+    margin-right: -16px;
+    margin-bottom: 3px;
 }
 
 @media screen and (max-width: 480px) {

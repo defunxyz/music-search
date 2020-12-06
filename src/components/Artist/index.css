@@ -68,11 +68,11 @@
 
 .artist-bio {
     height: 200px;
-    overflow-y: scroll;
+    overflow: hidden;
     color: #aeadad;
     font-size: 12px;
     border-radius: 4px;
-    border: 1px solid rgb(155, 155, 155);
+    border: 1px solid rgb(94, 94, 94);
     padding: .4rem;
     padding-right: 0;
 }
