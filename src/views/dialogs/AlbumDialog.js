@@ -40,8 +40,11 @@ export default class AlbumDialog extends React.Component {
     render = () => {
         const  { hasShadowOverlay, show, data, lyrics } = this.props;
         let bordertop = true;
+        let copyright = ""; 
 
-        if(lyrics === undefined){
+        if(lyrics !== undefined && lyrics.result !== undefined) {
+            copyright = lyrics.result.copyright.notice;
+        } else {
             bordertop = false;
         }
 
@@ -58,7 +61,7 @@ export default class AlbumDialog extends React.Component {
                     </DialogBody>
                     <DialogFooter borderTop={bordertop}>
                         {bordertop && <div className="notice copyright">
-                         &#169; {lyrics.result.copyright.notice}
+                         &#169; {copyright}
                         </div>}
                     </DialogFooter>
                 </Dialog>
