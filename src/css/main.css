@@ -504,6 +504,14 @@ kbd + span {
     margin-top: 20px;
 }
 
+.notice.copyright {
+    border-radius: 0;
+    text-align: left;
+    background: transparent;
+    color: #aeadad;
+    border: 1px solid rgb(94, 94, 94);
+}
+
 .lyrics {
     height: 220px;
     overflow: hidden;
