@@ -94,7 +94,6 @@ export default class App extends React.Component {
   }
 
   dataRenderHandler = (data, extra) => {
-    console.log(data);
     // eslint-disable-next-line
     switch(data.type) {
       case 'artist':

@@ -4,22 +4,42 @@ import "./index.css";
 
 const Track = (props) => {
     const { data, result } = props;
-    // eslint-disable-next-line
-    let lyrics = result.result.track.text.replace(new RegExp('\r?\n','g'), '<br />');
+    console.log(data);
+    let lyrics = "";
+    if(result.result !== undefined) {
+        // eslint-disable-next-line
+        lyrics = result.result.track.text.replace(new RegExp('\r?\n','g'), '<br />');
+    } else {
+        lyrics = "No lyrics data found.";
+    }
+
     return(
         <div className="album">
         <h1>{data.name}</h1>
-        <div className="artist-stats">
+
+        <div className="clearfix">
+            <div className="track-info lfloat">
+                <span id="artist" className="artist">{data.artists[0].name}</span>
+            </div>
+            <div className="track-stat rfloat">
             <div className="stat">
                 <span className="number">{data.popularity}</span>
                 <span className="infom">Popularity</span>
             </div>
         </div>
+        </div>
+        
+        {result.result !== undefined &&
         <div className="lyrics">
-            <Scrollbars style={{ height: 200 }}>
+             <Scrollbars style={{ height: 200 }}>
                 <div dangerouslySetInnerHTML={{ __html: lyrics }}></div>
             </Scrollbars>
-        </div>
+        </div>}
+        {result.result === undefined &&
+              <div className="notice">
+              {lyrics}
+              </div>
+            }
         </div>
     );
 };

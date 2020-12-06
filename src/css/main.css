@@ -56,6 +56,11 @@ body {
     background-color: var(--default-page-theme);
     min-height: 100vh;
     scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    text-rendering: geometricPrecision;
+    -moz-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: subpixel-antialiased;
 }
 
 h1,
@@ -508,6 +513,7 @@ kbd + span {
     border: 1px solid rgb(94, 94, 94);
     padding: .4rem;
     padding-right: 0;
+    margin-top: 10px;
 }
 
 hr {
