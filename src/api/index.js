@@ -18,6 +18,7 @@ const Spotify_Search_Endpoint = `https://api.spotify.com/v1/search?`;
 const Spotify_Artists_Albums_Endpoint = (id) => `https://api.spotify.com/v1/artists/${id}/albums`;
 const Spotify_Artist_Endpoint = (id) => `https://api.spotify.com/v1/artists/${id}`;
 const Spotify_Track_Endpoint = (id) => `https://api.spotify.com/v1/tracks/${id}`;
+const Spotify_Album_Endpoint = (id) => `https://api.spotify.com/v1/albums/${id}`;
 
 const Wikipedia_Extract_Endpoint = (title, format) => 
 `https://en.wikipedia.org/w/api.php?action=query&origin=*&prop=extracts&format=${format}&exintro=&titles=${title}`;
@@ -121,6 +122,25 @@ export const getArtistAlbumSpotify = (id) => {
         }
     }).then(function(response) { console.log(response); }).catch(function(error) { console.log(error); });
 };
+
+/**
+ * 
+ * @param {*} id 
+ */
+export const getAlbumSpotify = async (id) => {
+    return axios({
+        url: Spotify_Album_Endpoint(id),
+        method: 'get',
+        headers: {
+            'Accept':'application/json',
+            'Authorization': 'Bearer ' + spotify_token.access_token
+        }
+    }).then(response => {
+        return JSON.parse(JSON.stringify(response));
+    }).catch((error) => {
+        return error;
+    });
+}
 
 /**
  * A function that returns Spotify Token information in current session.

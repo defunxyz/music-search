@@ -10,8 +10,9 @@ import GetNameDialog from './views/dialogs/GetNameDialog';
 import AboutDialog from './views/dialogs/AboutDialog';
 import KeyboardDialog from './views/dialogs/KeyboardDialog';
 
-import {getSpotifyToken, authSpotifyAPI} from "./api";
+import {getSpotifyToken, authSpotifyAPI, getAlbumSpotify} from "./api";
 import ArtistDialog from "./views/dialogs/ArtistDialog";
+import DialogsContainer from "./components/DialogsContainer";
 
 const AppText = styled.h1`
   background-clip: text;
@@ -60,6 +61,9 @@ export default class App extends React.Component {
     if(success) {
       this.setState({ spotify_token: getSpotifyToken()})
       console.log(this.state.spotify_token);
+
+      const album = await getAlbumSpotify('2Y9IRtehByVkegoD7TcLfi');
+      console.log(album);
     }
   }
 
@@ -132,6 +136,7 @@ export default class App extends React.Component {
             <div className="hover-effect"></div>
           </div>
         </footer>
+        <DialogsContainer />
         <div id="dialogs">
             <GetNameDialog updateState={() => 
               {this.checkCookie(); this.setState({showGetName: !this.state.showGetName});}} 

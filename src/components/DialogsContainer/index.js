@@ -1,9 +1,8 @@
 import React from "react";
 
-class DialogsContainer extends React.Component 
+export default class DialogsContainer extends React.Component 
 {
-    constructor(...args)
-    {
+    constructor(...args) {
         super(...args);
         this.state = {
             showChild: false
@@ -15,9 +14,10 @@ class DialogsContainer extends React.Component
             showChild: false
         });
     }
-}
 
-ReactDOM.render(
-    <DialogsContainer />,
-    document.getElementById("root")
-);
+    render = () => {
+        return(
+        <div id="dialog-container">
+        </div>);
+    }
+};

@@ -10,7 +10,18 @@ const SearchItem = (props) => {
         const retrieved = await getArtistSpotify(e.currentTarget.parentNode.id);
         const extract = await fetchExtractFromWikipedia(retrieved.name, 'json');
         
-        props.handleArtist(retrieved, extract);
+        switch(retrieved.type) {
+            case 'artist':
+                props.handleArtist(retrieved, extract);
+                break;
+            case 'album':
+                //props.displayAlbum
+                break;
+            case 'track':
+                //props.displayTrackInfo
+                break;
+        }
+
         props.clear();
     }
 
