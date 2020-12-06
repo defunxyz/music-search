@@ -8,6 +8,7 @@ DialogTitle,
 DialogBar, DialogCloseBtn}
 from "../../components/Dialog";
 import Album from "../../components/Album";
+import { unstable_renderSubtreeIntoContainer } from "react-dom";
 
 export default class AlbumDialog extends React.Component {
     constructor(props) {
@@ -39,6 +40,12 @@ export default class AlbumDialog extends React.Component {
 
     render = () => {
         const  { hasShadowOverlay, show, data, lyrics } = this.props;
+        let bordertop = true;
+
+        if(lyrics === undefined){
+            bordertop = false;
+        }
+
         return (
             <ModalDialog hasShadowOverlay={hasShadowOverlay} display={show}>
                 <Dialog margintop={15} borderBottom={false} enableClose={true} display={show}>
@@ -50,8 +57,8 @@ export default class AlbumDialog extends React.Component {
                     <DialogBody>
                         <Album data={data} result={lyrics} />
                     </DialogBody>
-                    <DialogFooter borderTop={true}>
-                        {lyrics.result !== undefined && <div className="notice copyright">
+                    <DialogFooter borderTop={bordertop}>
+                        {bordertop && <div className="notice copyright">
                          &#169; {lyrics.result.copyright.notice}
                         </div>}
                     </DialogFooter>
