@@ -1,27 +1,41 @@
 import React from "react";
-import {getArtistSpotify, fetchExtractFromWikipedia} from "../../api";
+import {getArtistSpotify, getAlbumSpotify, getTrackSpotify, 
+    fetchExtractFromWikipedia, fetchLyrics} from "../../api";
 
 const SearchItem = (props) => {
     const {data} = props;
 
     const handleClick = async (e) => {
         e.preventDefault();
-        
-        const retrieved = await getArtistSpotify(e.currentTarget.parentNode.id);
-        const extract = await fetchExtractFromWikipedia(retrieved.name, 'json');
-        
-        switch(retrieved.type) {
-            case 'artist':
-                props.handleArtist(retrieved, extract);
+        let type = e.currentTarget.parentNode.getAttribute("data-type");
+        let id = e.currentTarget.parentNode.id;
+        let lyrics = "";
+
+        // eslint-disable-next-line
+        switch(type)
+        {
+            case "artist":
+                const artist = await getArtistSpotify(id);
+                const extract = await fetchExtractFromWikipedia(artist.name, 'json');
+                props.dataRenderHandler(artist, extract);
                 break;
-            case 'album':
-                //props.displayAlbum
+            case "album":
+                let album = await getAlbumSpotify(id);
+                
+                if(album.album_type === "single") {
+                    lyrics = await fetchLyrics(album.artists[0].name, album.name);
+                    props.dataRenderHandler(album, lyrics);
+                    break;
+                }
+                props.dataRenderHandler(album);
                 break;
-            case 'track':
-                //props.displayTrackInfo
+            case "track":
+                const track = await getTrackSpotify(id);
+                lyrics = await fetchLyrics(track.artists[0].name, track.name); 
+                props.dataRenderHandler(track, lyrics);
                 break;
         }
-
+        
         props.clear();
     }
 
@@ -47,7 +61,7 @@ const SearchItem = (props) => {
                 data.type.slice(0, 1).toUpperCase() + data.type.slice(1, data.type.length)}</span>}
 
             {data.type === "track" && <span className="type">{
-                data.type.slice(0, 1).toUpperCase() + data.type.slice(1, data.type.length)}</span>}
+                data.type.slice(0, 1).toUpperCase() + data.type.slice(1, data.type.length) + " by " + data.artists[0].name}</span>}
         </div>
     );
 };

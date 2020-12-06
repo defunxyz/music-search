@@ -5,7 +5,6 @@
  * @author Fisnik
  * @copyright 2020 Fisnik
  */
-
 import axios from 'axios';
 var querystring = require('querystring');
 
@@ -22,6 +21,9 @@ const Spotify_Album_Endpoint = (id) => `https://api.spotify.com/v1/albums/${id}`
 
 const Wikipedia_Extract_Endpoint = (title, format) => 
 `https://en.wikipedia.org/w/api.php?action=query&origin=*&prop=extracts&format=${format}&exintro=&titles=${title}`;
+
+const APISEEDS_Lyrics_Endpoint = (artist, songName) => 
+`https://orion.apiseeds.com/api/music/lyric/${artist}/${songName}?apikey=${process.env.REACT_APP_APISEED_API_KEY}`;
 
 // Tokens
 let spotify_token = {};
@@ -136,7 +138,7 @@ export const getAlbumSpotify = async (id) => {
             'Authorization': 'Bearer ' + spotify_token.access_token
         }
     }).then(response => {
-        return JSON.parse(JSON.stringify(response));
+        return JSON.parse(JSON.stringify(response.data));
     }).catch((error) => {
         return error;
     });
@@ -189,4 +191,12 @@ export const fetchExtractFromWikipedia = async (title, format) => {
       let id = Object.keys(path)[0];
       return {extract: path[id].extract};
     });
-  };
+};
+
+export const fetchLyrics = async (artist, title) => {
+    return axios.get(APISEEDS_Lyrics_Endpoint(artist, title)).then(response => {
+        return JSON.parse(JSON.stringify(response.data));
+    }).catch(error => {
+        return error;
+    });
+}

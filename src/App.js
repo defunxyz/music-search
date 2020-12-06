@@ -12,7 +12,8 @@ import KeyboardDialog from './views/dialogs/KeyboardDialog';
 
 import {getSpotifyToken, authSpotifyAPI, getAlbumSpotify} from "./api";
 import ArtistDialog from "./views/dialogs/ArtistDialog";
-import DialogsContainer from "./components/DialogsContainer";
+import AlbumDialog from "./views/dialogs/AlbumDialog";
+import TrackDialog from "./views/dialogs/TrackDialog";
 
 const AppText = styled.h1`
   background-clip: text;
@@ -25,12 +26,13 @@ const AppText = styled.h1`
 
 export default class App extends React.Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
       name: "",
       cookie_notification: true,
       spotify_token: {},
       data: {},
+      lyrics: {},
       stats: [
         {
           total: "100M+",
@@ -91,14 +93,25 @@ export default class App extends React.Component {
     this.setState({ name: username });
   }
 
-  handleArtist = (data, extract) => {
+  dataRenderHandler = (data, extra) => {
     console.log(data);
-    this.setState({ data: data, wiki: extract, showArtist: true });
+    // eslint-disable-next-line
+    switch(data.type) {
+      case 'artist':
+          this.setState({ data: data, wiki: extra, showArtist: true });
+          break;
+      case 'album':
+          this.setState({ data: data, lyrics: extra, showAlbum: true });
+          break;
+      case 'track':
+          this.setState({ data: data, lyrics: extra, showTrack: true });
+          break;
+    }
   }
 
   render() {
 
-    const { name, cookie_notification, stats, showGetName, showAbout, showHelp, showArtist } = this.state;
+    const { name, cookie_notification, stats, showGetName, showAbout, showHelp, showArtist, showAlbum, showTrack } = this.state;
 
     return (
       <>
@@ -109,7 +122,7 @@ export default class App extends React.Component {
           {name && <Greeting name={name} />}
         </header>
         <main>
-          <Search handleArtist={this.handleArtist} />
+          <Search dataRenderHandler={this.dataRenderHandler} />
           <StatisticsContainer data={stats} />
           <PoweredBy />
         </main>
@@ -136,7 +149,6 @@ export default class App extends React.Component {
             <div className="hover-effect"></div>
           </div>
         </footer>
-        <DialogsContainer />
         <div id="dialogs">
             <GetNameDialog updateState={() => 
               {this.checkCookie(); this.setState({showGetName: !this.state.showGetName});}} 
@@ -152,6 +164,14 @@ export default class App extends React.Component {
             {showArtist && <ArtistDialog data={this.state.data} 
             text={this.state.wiki} refresh={() => this.setState({ showArtist: !this.state.showArtist })} 
             show={showArtist} hasShadowOverlay={true} /> }
+
+            {showAlbum && <AlbumDialog data={this.state.data} lyrics={this.state.lyrics}
+            refresh={() => this.setState({ showAlbum: !this.state.showAlbum })} 
+            show={showAlbum} hasShadowOverlay={true} />}
+
+            {showTrack && <TrackDialog data={this.state.data} lyrics={this.state.lyrics}
+            refresh={() => this.setState({ showTrack: !this.state.showTrack })} 
+            show={showTrack} hasShadowOverlay={true} />}
         </div>
       </>
     );

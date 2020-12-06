@@ -16,7 +16,7 @@ export default (props) => {
                     {
                         filtered.map((item) =>
                             <li id={item.id} key={item.id} data-type={item.type}>
-                                <SearchItem data={item} handleArtist={props.handleArtist} clear={props.clear} />
+                                <SearchItem data={item} dataRenderHandler={props.dataRenderHandler} clear={props.clear} />
                             </li>
                         )
                     }

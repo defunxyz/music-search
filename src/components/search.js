@@ -112,7 +112,7 @@ export default class Search extends React.Component {
                   onChange={e => this.handleChange(e)} />
               </form>
             </div>
-            <Autosuggest matches={matches} query={query} handleArtist={this.props.handleArtist} clear={this.clear} />
+            <Autosuggest matches={matches} query={query} dataRenderHandler={this.props.dataRenderHandler} clear={this.clear} />
           </section>
         );
     }
