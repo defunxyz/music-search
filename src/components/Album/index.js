@@ -6,12 +6,14 @@ import "./index.css";
 const Album = (props) => {
     const { data, result } = props;
     let lyrics = "";
+    let found = true;
     
     if(result !== undefined && result.result !== undefined) {
         // eslint-disable-next-line
         lyrics = result.result.track.text.replace(new RegExp('\r?\n','g'), '<br />');
     } else {
         lyrics = "No lyrics data found."
+        found = false;
     }
     
     return(
@@ -33,12 +35,12 @@ const Album = (props) => {
                 </div>
             </div>
         </div>
-        {result.result !== undefined && <div className="lyrics">
+        {found !== false && <div className="lyrics">
             <Scrollbars style={{ height: 200 }}>
                 <div dangerouslySetInnerHTML={{ __html: lyrics }}></div>
             </Scrollbars>
         </div>}
-        {result.result === undefined &&
+        {found === false &&
         <div className="notice">
             {lyrics}
         </div>}
