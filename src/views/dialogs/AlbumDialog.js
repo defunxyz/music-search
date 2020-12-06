@@ -8,7 +8,6 @@ DialogTitle,
 DialogBar, DialogCloseBtn}
 from "../../components/Dialog";
 import Album from "../../components/Album";
-import { unstable_renderSubtreeIntoContainer } from "react-dom";
 
 export default class AlbumDialog extends React.Component {
     constructor(props) {
