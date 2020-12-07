@@ -77,6 +77,15 @@
     padding-right: 0;
 }
 
+.artist-bio div {
+    overflow: auto;
+    overflow-y: scroll;
+    padding-right: 20px;
+    box-sizing: content-box;
+    height: 100%;
+    width: 100%;
+}
+
 p {
     font-size: .9rem;
     line-height: 1.25;

@@ -1,5 +1,4 @@
 import React from "react";
-import { Scrollbars } from 'react-custom-scrollbars';
 import "./index.css";
 import convertNumber from "../../utility";
 import {capitalize} from "../../utility";
@@ -30,9 +29,7 @@ const Artist = ({data, text}) => {
         </div>
         {text.extract && 
         <div className="artist-bio">
-            <Scrollbars style={{ height: 200 }}>
-                <div dangerouslySetInnerHTML={{ __html: text.extract }}></div>
-            </Scrollbars>
+            <div dangerouslySetInnerHTML={{ __html: text.extract }}></div>
         </div>}
         {text.extract === undefined &&
         <div className="notice">

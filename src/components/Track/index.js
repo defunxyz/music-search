@@ -13,6 +13,13 @@ const Track = (props) => {
         lyrics = "No lyrics data found.";
     }
 
+    function msToMinAndSec(millis) {
+        var minutes = Math.floor(millis / 60000);
+        var seconds = ((millis % 60000) / 1000).toFixed(0);
+        return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+    }
+      
+
     return(
         <div className="album">
         <h1>{data.name}</h1>
@@ -20,6 +27,8 @@ const Track = (props) => {
         <div className="clearfix">
             <div className="track-info lfloat">
                 <span id="artist" className="artist">{data.artists[0].name}</span>
+                <span id="track_number">Track number {data.track_number}</span>
+                <span id="duration">Duration {msToMinAndSec(data.duration_ms)}</span>
             </div>
             <div className="track-stat rfloat">
             <div className="stat">

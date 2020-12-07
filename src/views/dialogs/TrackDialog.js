@@ -38,7 +38,16 @@ export default class TrackDialog extends React.Component {
     }
 
     render = () => {
-        const  { hasShadowOverlay, show } = this.props;
+        const  { hasShadowOverlay, show, data, lyrics } = this.props;
+        let bordertop = true;
+        let copyright = "";
+
+        if(lyrics !== undefined && lyrics.result !== undefined) {
+            copyright = lyrics.result.copyright.notice;
+        } else {
+            bordertop = false;
+        }
+
         return (
             <ModalDialog hasShadowOverlay={hasShadowOverlay} display={show}>
                 <Dialog margintop={15} borderBottom={false} enableClose={true} display={show}>
@@ -48,9 +57,13 @@ export default class TrackDialog extends React.Component {
                         enableClose={true}></DialogCloseBtn>
                     </DialogBar>
                     <DialogBody>
-                        <Track data={this.props.data} result={this.props.lyrics} />
+                        <Track data={data} result={lyrics} />
                     </DialogBody>
-                    <DialogFooter></DialogFooter>
+                    <DialogFooter bordertop={bordertop}>
+                        {bordertop && <div className="notice copyright">
+                         &#169; {copyright}
+                        </div>}
+                    </DialogFooter>
                 </Dialog>
             </ModalDialog>
         );
