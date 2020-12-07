@@ -10,7 +10,7 @@ import Artist from "../../components/Artist";
 
 export default class ArtistDialog extends React.Component {
     constructor(props) {
-        super();
+        super(props);
         this.state = {};
         this.handleClose = this.handleClose.bind(this);
     }
