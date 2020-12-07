@@ -15,7 +15,8 @@ const Greetings = styled.div`
   padding: 1rem;
 `
 const Text = styled.h3`
-  font-weight: 300
+  font-weight: 300;
+  margin: 0 !important;
 `
 const Username = styled.span`
 font-weight: 500;

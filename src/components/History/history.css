@@ -1,11 +1,5 @@
 h2 { font-weight: 700; }
 
-h3 {
-    padding-bottom: 0;
-    margin-bottom: 2px;
-    margin-top: 1.7rem;
-}
-
 h4 {
     font-weight: 300;
 }
@@ -36,6 +30,40 @@ h4 {
     padding: .8rem;
     color: #eee;
     font-weight: 700;
+}
+
+.popout-body {
+    width: 100%;
+    height: 100%;
+}
+
+.no-history {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-content: center;
+    justify-content: normal;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 30px;
+    color: #D3D3D3;
+}
+
+.no-history h3 {
+    margin: 0 auto;
+    display: block;
+    padding-bottom: 10px;
+}
+
+.no-history span {
+    display: block;
+    margin: 0 auto;
+    word-wrap: break-word;
+    word-spacing: normal;
+    word-break: break-word;
+    color: var(--distinctive-gray-text);
 }
 
 .close {
