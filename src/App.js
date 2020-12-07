@@ -4,7 +4,6 @@ import Greeting from "./components/Greeting";
 import Search from "./components/Search";
 import PoweredBy from "./components/PoweredBy";
 import Copyright from "./components/Copyright";
-import Cookies from 'universal-cookie';
 import Alert from './components/Alert';
 import StatisticsContainer from './components/StatisticsContainer';
 import GetNameDialog from './views/dialogs/GetNameDialog';
@@ -19,6 +18,8 @@ import TrackDialog from "./views/dialogs/TrackDialog";
 import HistoryButton from "./components/History/HistoryButton";
 import HistoryPopOver from "./components/History/HistoryPopOver";
 
+import { loadData } from "./storage";
+
 const AppText = styled.h1`
   background-clip: text;
   color: transparent;
@@ -32,10 +33,10 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
       cookie_notification: true,
       spotify_token: {},
       data: {},
+      cookie_data: {},
       lyrics: {},
       stats: [
         {
@@ -86,15 +87,17 @@ export default class App extends React.Component {
   }
 
   checkCookie = () => {
-    const cookie = new Cookies();
-    let username = cookie.get('username');
-    console.log(username);
 
-    if (username) {
-      this.setState({ cookie_notification: false });
+    if (this.state.cookie_notification) {
+      const data = loadData();
+      console.log(data);
+
+      if (data) {
+        this.setState({ cookie_notification: false });
+      }
+
+      this.setState({ cookie_data: data });
     }
-
-    this.setState({ name: username });
   }
 
   showAbout = () => {
@@ -123,7 +126,7 @@ export default class App extends React.Component {
 
   render() {
 
-    const { name, cookie_notification, stats, showGetName, showAbout, showHelp, showArtist, showAlbum, showTrack, showPopOver } = this.state;
+    const { cookie_data, cookie_notification, stats, showGetName, showAbout, showHelp, showArtist, showAlbum, showTrack, showPopOver } = this.state;
 
     return (
       <>
@@ -131,7 +134,7 @@ export default class App extends React.Component {
           <AppText className="lfloat">
             Instantly Search artists, songs,<br />anytime, anywhere.
           </AppText>
-          {name && <Greeting name={name} />}
+          {!cookie_notification && <Greeting name={cookie_data.username} />}
         </header>
         <main>
           <Search dataRenderHandler={this.dataRenderHandler} />

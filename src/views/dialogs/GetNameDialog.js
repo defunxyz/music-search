@@ -1,5 +1,4 @@
 import React from "react";
-import Cookies from 'universal-cookie';
 import 
 { Dialog, 
 DialogTitle,
@@ -8,10 +7,11 @@ DialogFooter,
 ModalDialog, 
 DialogBar}
 from "../../components/Dialog";
+import { saveData } from "../../storage";
 
 export default class GetNameDialog extends React.Component{
     constructor(props) {
-        super();
+        super(props);
         this.state = {
             value: "",
             submitDisabled: true,
@@ -29,9 +29,9 @@ export default class GetNameDialog extends React.Component{
     
     handleSubmit = (e) => {
         e.preventDefault();
-        const cookie = new Cookies();
         const name = e.target.name.value;
-        cookie.set('username', name, { path: '/' });
+        var data = { username: name, history: [] };
+        saveData(data);
         this.props.updateState();
     }
 

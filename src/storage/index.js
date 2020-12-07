@@ -10,7 +10,7 @@ const cookie = new Cookies();
 const loadData = (key='musicapp') => {
     const serializedData = cookie.get(key);
     if (serializedData) {
-        return JSON.parse(serializedData);
+        return JSON.parse(JSON.stringify(serializedData));
     } else {
         return undefined;
     }
