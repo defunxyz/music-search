@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
+import HistoryItem from "../Data/HistoryItem";
 
 export default (props) => {
     const {data} = props;
-    if(data === undefined) {
+    if(data === undefined || data.length === 0) {
         return(<div className="no-history">
             <h3>
                 No history this time!
@@ -14,11 +15,19 @@ export default (props) => {
         </div>);
     }
 
+    useEffect(() => {
+        var history = document.getElementById("history");
+        history.scrollTop = history.scrollHeight;
+    });
+
     return(
-        <ul>
-        {data.map((item) => 
-        <li id={item.id} key={item.id}>
-        </li>)}
-        </ul>
+        <div id="history" className="history">
+            <ul>
+                {data.map((item) =>
+                    <li id={item.id} key={item.id}>
+                        <HistoryItem data={item} />
+                    </li>)}
+            </ul>
+        </div>
     );
 };

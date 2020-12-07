@@ -1,16 +1,15 @@
 /*
   Author: Fisnik
 */
-import Cookies from 'universal-cookie';
-const cookie = new Cookies();
+
 /**
  * 
  * @param {*} key 
  */
 const loadData = (key='musicapp') => {
-    const serializedData = cookie.get(key);
-    if (serializedData) {
-        return JSON.parse(JSON.stringify(serializedData));
+    const serializedState = window.localStorage.getItem(key);
+    if (serializedState) {
+        return JSON.parse(serializedState);
     } else {
         return undefined;
     }
@@ -22,12 +21,12 @@ const loadData = (key='musicapp') => {
  * @param {*} key 
  */
 const saveData = (data, key='musicapp') => {
-    const serializedData = JSON.stringify(data);
-    cookie.set(key, serializedData, { path: '/' });
+    const serializedState = JSON.stringify(data);
+    localStorage.setItem(key, serializedState);
 }
 
 const clearLocalStorage = () => {
-    cookie.remove('musicapp');
+    localStorage.clear();
 }
 
 export { loadData, saveData, clearLocalStorage }; 

@@ -4,8 +4,8 @@ const HistoryButton = (props) => {
     const [count, setCount] = useState(0);
 
     useEffect(() => {
-        setCount(0);
-    }, []);
+        setCount(props.data.length);
+    });
 
     return (
         <div class="floating-circle-btn" onClick={() => {props.showHistoryPopOver()}}>

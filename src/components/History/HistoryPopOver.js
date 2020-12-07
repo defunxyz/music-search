@@ -29,8 +29,9 @@ class HistoryPopOver extends React.Component {
                     </svg>
                 </dvi>
                 <div className="popout-body">
-                    <HistoryList />
+                    <HistoryList data={this.props.data} />
                 </div>
+                <div className="popout-footer"></div>
             </div>
         );
     }

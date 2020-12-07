@@ -36,7 +36,10 @@ export default class App extends React.Component {
       cookie_notification: true,
       spotify_token: {},
       data: {},
-      cookie_data: {},
+      storage_data: {
+        username: "",
+        history: []
+      },
       lyrics: {},
       stats: [
         {
@@ -63,7 +66,15 @@ export default class App extends React.Component {
 
   componentDidMount = async () => {
     document.addEventListener("keydown", this._handleKeyDown, false);
-    this.checkCookie();
+
+    const data = loadData();
+    this.setState({ storage_data: data });
+    if(this.state.cookie_notification === true) {
+      if(data) {
+        this.setState({ cookie_notification: false });
+      }
+    }
+
     const success = await authSpotifyAPI();
     if(success) {
       this.setState({ spotify_token: getSpotifyToken()})
@@ -86,9 +97,7 @@ export default class App extends React.Component {
     this.setState({ cookie_notification: false, showGetName: true });
   }
 
-  checkCookie = () => {
-
-    if (this.state.cookie_notification) {
+  checkStorage = () => {
       const data = loadData();
       console.log(data);
 
@@ -97,7 +106,6 @@ export default class App extends React.Component {
       }
 
       this.setState({ cookie_data: data });
-    }
   }
 
   showAbout = () => {
@@ -126,7 +134,11 @@ export default class App extends React.Component {
 
   render() {
 
-    const { cookie_data, cookie_notification, stats, showGetName, showAbout, showHelp, showArtist, showAlbum, showTrack, showPopOver } = this.state;
+    const { storage_data, cookie_notification, stats, showGetName, showAbout, showHelp, showArtist, showAlbum, showTrack, showPopOver } = this.state;
+    let noCookidata = false;
+    if(storage_data === undefined) {
+      noCookidata = true;
+    }
 
     return (
       <>
@@ -134,7 +146,6 @@ export default class App extends React.Component {
           <AppText className="lfloat">
             Instantly Search artists, songs,<br />anytime, anywhere.
           </AppText>
-          {!cookie_notification && <Greeting name={cookie_data.username} />}
         </header>
         <main>
           <Search dataRenderHandler={this.dataRenderHandler} />
@@ -144,12 +155,12 @@ export default class App extends React.Component {
         </main>
         { cookie_notification && <Alert message="We use cookies to ensure that we give you the best experience on our website."
           hideCookieNotification={this.hideCookieNotification} animate={cookie_notification === false ? true : false} />}
-        { showPopOver && <HistoryPopOver show={showPopOver} /> }
-        { !cookie_notification && <HistoryButton showHistoryPopOver={this.showHistoryPopOver} /> }
+        { showPopOver && <HistoryPopOver show={showPopOver} data={storage_data.history} /> }
+        { !noCookidata && <HistoryButton showHistoryPopOver={this.showHistoryPopOver} data={storage_data.history} /> }
         { cookie_notification && <footer> <Copyright toggleShowAbout={this.showAbout} /> </footer>}
         <div id="dialogs">
             <GetNameDialog updateState={() => 
-              {this.checkCookie(); this.setState({showGetName: !this.state.showGetName});}} 
+              {this.checkStorage(); this.setState({showGetName: !this.state.showGetName});}} 
               show={showGetName ? true : false} 
               hasShadowOverlay={true} /> 
             

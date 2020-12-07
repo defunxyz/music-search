@@ -1,16 +1,9 @@
 import React from "react";
 import {getArtistSpotify, getAlbumSpotify, getTrackSpotify, 
     fetchExtractFromWikipedia, fetchLyrics} from "../../api";
-import { loadData, saveData } from "../../storage";
 
-const SearchItem = (props) => {
+const HistoryItem = (props) => {
     const {data} = props;
-
-    const storeHistory = (item) => {
-        let stored = loadData();
-        stored.history.push(item);
-        saveData(stored);
-    }
 
     const handleClick = async (e) => {
         e.preventDefault();
@@ -24,12 +17,10 @@ const SearchItem = (props) => {
             case "artist":
                 const artist = await getArtistSpotify(id);
                 const extract = await fetchExtractFromWikipedia(artist.name, 'json');
-                storeHistory(artist);
                 props.dataRenderHandler(artist, extract);
                 break;
             case "album":
                 let album = await getAlbumSpotify(id);
-                storeHistory(album);
                 if(album.album_type === "single") {
                     lyrics = await fetchLyrics(album.artists[0].name, album.name);
                     props.dataRenderHandler(album, lyrics);
@@ -39,25 +30,14 @@ const SearchItem = (props) => {
                 break;
             case "track":
                 const track = await getTrackSpotify(id);
-                storeHistory(track);
                 lyrics = await fetchLyrics(track.artists[0].name, track.name); 
                 props.dataRenderHandler(track, lyrics);
                 break;
         }
-        
-        props.clear();
-    }
-
-    const handleKeyDown = async (e) => {
-        if(e.key === 13) {
-            e.preventDefault();
-            console.log(e.currentTarget.parentNode.id);
-            console.log(e.currentTarget.parentNode.attributes.getNamedItem('data-type').value);
-        }
     }
 
     return (
-        <div className="autocomplete-item" role="option" aria-selected="false" onClick={handleClick} onKeyDown={handleKeyDown}>
+        <div className="history-item" role="option" aria-selected="false" onClick={handleClick}>
             {data.images === undefined ? "" : data.images[0] === undefined ? "" :
                 <div className="image-ancor"><img className="image" src={data.images[0].url} alt="" /></div>}
             <div className="label">{data.name}</div>
@@ -75,4 +55,4 @@ const SearchItem = (props) => {
     );
 };
 
-export default SearchItem;
+export default HistoryItem;
