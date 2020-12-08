@@ -1,6 +1,6 @@
 import React from "react";
 import { fetchExtractFromWikipedia, fetchLyrics } from "../../api";
-import { loadData, saveData } from "../../storage";
+import { loadData } from "../../storage";
 
 const HistoryItem = (props) => {
     const {data} = props;
@@ -17,8 +17,8 @@ const HistoryItem = (props) => {
 
     const handleClick = async (e) => {
         e.preventDefault();
-        let type = e.currentTarget.parentNode.getAttribute("data-type");
-        let id = e.currentTarget.parentNode.id;
+        let type = e.currentTarget.parentNode.parentNode.getAttribute("data-type");
+        let id = e.currentTarget.parentNode.parentNode.id;
         let lyrics = "";
 
         let local = loadData();
@@ -47,27 +47,34 @@ const HistoryItem = (props) => {
         }
     }
 
+    const handleDeleteClick = (e) => {
+        e.preventDefault();
+        console.log("Clicked!");
+    }
+
     return (
-        <div className="history-item" role="option" aria-selected="false" onClick={handleClick}>
-            {data.images === undefined ? "" : data.images[0] === undefined ? "" :
-                <div className="image-ancor"><img className="image" src={data.images[0].url} alt="" /></div>}
-            <div className="label">{data.name}</div>
+        <div className="history-item">
+            <div className="history-item-content" role="option" aria-selected="false" onClick={handleClick}>
+                {data.images === undefined ? "" : data.images[0] === undefined ? "" :
+                    <div className="image-ancor"><img className="image" src={data.images[0].url} alt="" /></div>}
+                <div className="label">{data.name}</div>
 
-            {data.type === "album" && <span className="type">
-                {data.album_type.slice(0, 1).toUpperCase() + data.album_type.slice(1, data.album_type.length) +
-                    " by " + data.artists[0].name}</span>}
+                {data.type === "album" && <span className="type">
+                    {data.album_type.slice(0, 1).toUpperCase() + data.album_type.slice(1, data.album_type.length) +
+                        " by " + data.artists[0].name}</span>}
 
-            {data.type === "artist" && <span className="type">{
-                data.type.slice(0, 1).toUpperCase() + data.type.slice(1, data.type.length)}</span>}
+                {data.type === "artist" && <span className="type">{
+                    data.type.slice(0, 1).toUpperCase() + data.type.slice(1, data.type.length)}</span>}
 
-            {data.type === "track" && <span className="type">{
-                data.type.slice(0, 1).toUpperCase() + data.type.slice(1, data.type.length) + " by " + data.artists[0].name}</span>}
-            <div className="roundBtn">
+                {data.type === "track" && <span className="type">{
+                    data.type.slice(0, 1).toUpperCase() + data.type.slice(1, data.type.length) + " by " + data.artists[0].name}</span>}
+            </div>
+            <div role="button" className="roundBtn" onClick={handleDeleteClick}>
                 <div className="btn-content btn-delete">
-                <svg className="delete rfloat" height="30px" width="30px" viewBox="0 0 24 24">
-                    <line stroke="#bec2c9" stroke-linecap="round" strokeWidth="2" x1="6" x2="18" y1="6" y2="18"></line>
-                    <line stroke="#bec2c9" stroke-linecap="round" strokeWidth="2" x1="6" x2="18" y1="18" y2="6"></line>
-                </svg>
+                    <svg className="delete rfloat" height="30px" width="30px" viewBox="0 0 24 24">
+                        <line stroke="#bec2c9" stroke-linecap="round" strokeWidth="2" x1="6" x2="18" y1="6" y2="18"></line>
+                        <line stroke="#bec2c9" stroke-linecap="round" strokeWidth="2" x1="6" x2="18" y1="18" y2="6"></line>
+                    </svg>
                 </div>
             </div>
         </div>
