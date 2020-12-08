@@ -1,9 +1,19 @@
 import React from "react";
-import {getArtistSpotify, getAlbumSpotify, getTrackSpotify, 
-    fetchExtractFromWikipedia, fetchLyrics} from "../../api";
+import { fetchExtractFromWikipedia, fetchLyrics } from "../../api";
+import { loadData, saveData } from "../../storage";
 
 const HistoryItem = (props) => {
     const {data} = props;
+
+    const getItem = (local, id) => {
+        var selected = local.history.filter(item => {
+            if(item.id === id) {
+                return item;
+            }
+        });
+
+        return selected[0];
+    }
 
     const handleClick = async (e) => {
         e.preventDefault();
@@ -11,27 +21,28 @@ const HistoryItem = (props) => {
         let id = e.currentTarget.parentNode.id;
         let lyrics = "";
 
+        let local = loadData();
+        let selected = getItem(local, id);
+        console.log(selected);
+
         // eslint-disable-next-line
         switch(type)
         {
             case "artist":
-                const artist = await getArtistSpotify(id);
-                const extract = await fetchExtractFromWikipedia(artist.name, 'json');
-                props.dataRenderHandler(artist, extract);
+                const extract = await fetchExtractFromWikipedia(selected.name, 'json');
+                props.dataRenderHandler(selected, extract);
                 break;
             case "album":
-                let album = await getAlbumSpotify(id);
-                if(album.album_type === "single") {
-                    lyrics = await fetchLyrics(album.artists[0].name, album.name);
-                    props.dataRenderHandler(album, lyrics);
+                if(selected.album_type === "single") {
+                    lyrics = await fetchLyrics(selected.artists[0].name, selected.name);
+                    props.dataRenderHandler(selected, lyrics);
                     break;
                 }
-                props.dataRenderHandler(album);
+                props.dataRenderHandler(selected);
                 break;
             case "track":
-                const track = await getTrackSpotify(id);
-                lyrics = await fetchLyrics(track.artists[0].name, track.name); 
-                props.dataRenderHandler(track, lyrics);
+                lyrics = await fetchLyrics(selected.artists[0].name, selected.name); 
+                props.dataRenderHandler(selected, lyrics);
                 break;
         }
     }
@@ -51,6 +62,14 @@ const HistoryItem = (props) => {
 
             {data.type === "track" && <span className="type">{
                 data.type.slice(0, 1).toUpperCase() + data.type.slice(1, data.type.length) + " by " + data.artists[0].name}</span>}
+            <div className="roundBtn">
+                <div className="btn-content btn-delete">
+                <svg className="delete rfloat" height="30px" width="30px" viewBox="0 0 24 24">
+                    <line stroke="#bec2c9" stroke-linecap="round" strokeWidth="2" x1="6" x2="18" y1="6" y2="18"></line>
+                    <line stroke="#bec2c9" stroke-linecap="round" strokeWidth="2" x1="6" x2="18" y1="18" y2="6"></line>
+                </svg>
+                </div>
+            </div>
         </div>
     );
 };

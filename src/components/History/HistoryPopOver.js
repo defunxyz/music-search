@@ -21,15 +21,15 @@ class HistoryPopOver extends React.Component {
 
         return (
             <div className="popout">
-                <dvi className="popout-bar clearfix">
+                <div className="popout-bar clearfix">
                     <h2 className="lfloat">History</h2>
                     <svg onClick={this.toggleVisible} className="close rfloat" height="30px" width="30px" viewBox="0 0 24 24">
-                        <line stroke="#bec2c9" stroke-linecap="round" strokeWidth="2" x1="6" x2="18" y1="6" y2="18"></line>
-                        <line stroke="#bec2c9" stroke-linecap="round" strokeWidth="2" x1="6" x2="18" y1="18" y2="6"></line>
+                        <line stroke="#bec2c9" strokeLinecap="round" strokeWidth="2" x1="6" x2="18" y1="6" y2="18"></line>
+                        <line stroke="#bec2c9" strokeLinecap="round" strokeWidth="2" x1="6" x2="18" y1="18" y2="6"></line>
                     </svg>
-                </dvi>
+                </div>
                 <div className="popout-body">
-                    <HistoryList data={this.props.data} />
+                    <HistoryList data={this.props.data} dataRenderHandler={this.props.dataRenderHandler}/>
                 </div>
                 <div className="popout-footer"></div>
             </div>

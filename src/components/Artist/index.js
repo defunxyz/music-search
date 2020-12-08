@@ -32,7 +32,7 @@ const Artist = ({data, text}) => {
             <div dangerouslySetInnerHTML={{ __html: text.extract }}></div>
         </div>}
         {text.extract === undefined &&
-        <div className="notice">
+        <div className="notice no-data">
             No artist bios was found for this artist.
         </div>}
         </>

@@ -24,8 +24,8 @@ export default (props) => {
         <div id="history" className="history">
             <ul>
                 {data.map((item) =>
-                    <li id={item.id} key={item.id}>
-                        <HistoryItem data={item} />
+                    <li id={item.id} key={item.id} data-type={item.type}>
+                        <HistoryItem data={item} dataRenderHandler={props.dataRenderHandler} />
                     </li>)}
             </ul>
         </div>

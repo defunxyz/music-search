@@ -41,7 +41,7 @@ const Album = (props) => {
             </Scrollbars>
         </div>}
         {found === false &&
-        <div className="notice">
+        <div className="notice no-data">
             {lyrics}
         </div>}
         </div>

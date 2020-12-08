@@ -25,14 +25,14 @@ const SearchItem = (props) => {
                 const artist = await getArtistSpotify(id);
                 const extract = await fetchExtractFromWikipedia(artist.name, 'json');
                 storeHistory(artist);
-                props.dataRenderHandler(artist, extract);
+                props.dataRenderHandler(artist, extract, true);
                 break;
             case "album":
                 let album = await getAlbumSpotify(id);
                 storeHistory(album);
                 if(album.album_type === "single") {
                     lyrics = await fetchLyrics(album.artists[0].name, album.name);
-                    props.dataRenderHandler(album, lyrics);
+                    props.dataRenderHandler(album, lyrics, true);
                     break;
                 }
                 props.dataRenderHandler(album);
@@ -41,7 +41,7 @@ const SearchItem = (props) => {
                 const track = await getTrackSpotify(id);
                 storeHistory(track);
                 lyrics = await fetchLyrics(track.artists[0].name, track.name); 
-                props.dataRenderHandler(track, lyrics);
+                props.dataRenderHandler(track, lyrics, true);
                 break;
         }
         

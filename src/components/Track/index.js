@@ -45,7 +45,7 @@ const Track = (props) => {
             </Scrollbars>
         </div>}
         {result.result === undefined &&
-              <div className="notice">
+              <div className="notice no-data">
               {lyrics}
               </div>
             }
