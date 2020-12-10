@@ -108,6 +108,7 @@ a {
 .fixed { position: fixed !important; }
 .lfloat { float: left !important; }
 .rfloat { float: right !important; }
+.text-center { text-align: center;}
 
 #root {
     height: 100%;
@@ -668,6 +669,24 @@ hr {
         height: 100px;
         border-right: 1;
     }
+}
+
+.sprite {
+    background: url('../sprite/sprite.png'); 
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.hands {
+    background-position: -88px -6px;
+    width: 54px;
+	height: 48px;
+}
+
+.laptop {
+    background-position: -12px -11px;
+    width: 54px;
+	height: 41px;
 }
 
 @media (max-width: 480px) {

@@ -64,6 +64,9 @@ export default class AboutDialog extends React.Component {
                                 <p>{developer.about}</p>
                                 </>
                             ))}
+                            <p className="emoji text-center">
+                                <i className="sprite laptop"></i>
+                            </p>
                         </div>
                     </DialogBody>
                     <DialogFooter></DialogFooter>
