@@ -6,6 +6,7 @@ const HistoryItem = (props) => {
     const {data} = props;
 
     const getItem = (local, id) => {
+        // eslint-disable-next-line
         var selected = local.history.filter(item => {
             if(item.id === id) {
                 return item;
@@ -49,7 +50,7 @@ const HistoryItem = (props) => {
 
     const handleDeleteClick = (e) => {
         e.preventDefault();
-        console.log("Clicked!");
+        props.delete(e.currentTarget.parentNode.parentNode.id);
     }
 
     return (

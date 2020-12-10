@@ -2,16 +2,37 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./history.css";
 import HistoryList from "./HistoryList";
+import { loadData, saveData } from "../../storage";
 
 class HistoryPopOver extends React.Component {
     constructor(props){
         super(props);
-        this.state = { visible: this.props.show }
+        this.state = {
+             visible: this.props.show,
+             items: props.data
+            }
         this.toggleVisible = this.toggleVisible.bind(this);
     }
 
     toggleVisible = () => {
         this.setState({ visible: !this.state.visible });
+    }
+
+    storeHistory = (items) => {
+        let stored = loadData();
+        stored.history.splice(0, stored.history.length);
+        stored.history = items;
+        saveData(stored);
+        this.props.refresh();
+    }
+
+    _handleDelete = (id) => {
+        const updateItems = this.state.items.filter(item => { 
+                return item.id !== id
+        });
+        
+        this.setState({ items: [...updateItems]})
+        this.storeHistory(updateItems);
     }
 
     render() {
@@ -29,7 +50,7 @@ class HistoryPopOver extends React.Component {
                     </svg>
                 </div>
                 <div className="popout-body">
-                    <HistoryList data={this.props.data} dataRenderHandler={this.props.dataRenderHandler}/>
+                    <HistoryList data={this.state.items} dataRenderHandler={this.props.dataRenderHandler} handleDelete={this._handleDelete} />
                 </div>
                 <div className="popout-footer"></div>
             </div>

@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
 import styled from "styled-components";
-//import Greeting from "./components/Greeting";
+import Greeting from "./components/Greeting";
+import Alert from "./components/Alert";
 import Search from "./components/Search";
 import PoweredBy from "./components/PoweredBy";
 import Copyright from "./components/Copyright";
-import Alert from './components/Alert';
 import StatisticsContainer from './components/StatisticsContainer';
 import GetNameDialog from './views/dialogs/GetNameDialog';
 import AboutDialog from './views/dialogs/AboutDialog';
@@ -53,11 +53,11 @@ const App = () => {
       }
     ]
   });
-  const [storage_data, setStorageDate] = useState({
+  const [storage_data, setStorageData] = useState({
     username: "",
     history: []
   });
-  const [data_notification, setNotification] = useState(true);
+  const [notification, setNotification] = useState(false);
   const [spotify_token, setToken] = useState({});
   const [dialog, setActive] = useState({
     getStartedDialog: false,
@@ -69,19 +69,26 @@ const App = () => {
   });
   const [history, showHistory] = useState(false);
 
-  useEffect(async () => {
+  useEffect(() => {
     document.addEventListener("keydown", handleKeyDown, false);
-    if(spotify_token === undefined || spotify_token === {}){
-      const success = await authSpotifyAPI();
-      if(success){
+
+    const fetchSpotifyToken = async () => {
+      const token = await authSpotifyAPI();
+      if(token){
         setToken(getSpotifyToken());
       }
     }
 
+    if(spotify_token === undefined || spotify_token === {}){
+      fetchSpotifyToken();
+    }
+
     const data = loadData();
-    if(data){
+    if(data !== undefined){
       setNotification(false);
-      setStorageDate(data);
+      setStorageData(data);
+    } else {
+      setNotification(true);
     }
   }, []);
 
@@ -95,7 +102,7 @@ const App = () => {
   const refresh = () => {
     const data = loadData();
     if(data){
-      setStorageDate(data);
+      setStorageData(data);
     }
   }
 
@@ -116,6 +123,7 @@ const App = () => {
           setState({...state, data: data, lyrics: extra });
           setActive({...dialog, trackDialog: true});
           break;
+      default: break;
     }
   }
 
@@ -125,23 +133,27 @@ const App = () => {
       <AppText className="lfloat">
         Instantly Search artists, songs,<br />anytime, anywhere.
       </AppText>
+      {storage_data.username && <Greeting name={storage_data.username} />}
     </header>
     <main>
       <Search dataRenderHandler={dataRenderHandler} />
       <StatisticsContainer data={state.stats} />
       <PoweredBy />
-      { !data_notification && <Copyright toggleShowAbout={() => setActive({...dialog, aboutDialog: true})} style={{ opacity: 0.5, marginTop: 30 }} /> }
+      { !notification && 
+        <Copyright toggleShowAbout={() => setActive({...dialog, aboutDialog: true})} style={{ opacity: 0.5, marginTop: 30 }} /> 
+      }
     </main>
-    { data_notification && <Alert message="We use cookies to ensure that we give you the best experience on our website."
-      hideCookieNotification={setNotification} animate={data_notification === false ? true : false} />}
-    { history && <HistoryPopOver show={history} data={storage_data.history} dataRenderHandler={dataRenderHandler} /> }
-    { <HistoryButton showHistoryPopOver={() => showHistory(!history)} data={storage_data.history} /> }
-    { data_notification && <footer> <Copyright toggleShowAbout={() => setActive({...dialog, aboutDialog: true})} /> </footer>}
+    { history && <HistoryPopOver show={history} data={storage_data.history} dataRenderHandler={dataRenderHandler} refresh={refresh} /> }
+    { !notification && <HistoryButton showHistoryPopOver={() => showHistory(!history)} data={storage_data.history} /> }
+    { notification && <Alert message="We use localstorage to ensure that we give you the best experience on our website."
+      hideCookieNotification={() => { setActive({...dialog, getStartedDialog: true}); setNotification(false); }} /> }
+    { notification &&
+      <footer> <Copyright toggleShowAbout={() => setActive({...dialog, aboutDialog: true})} /> </footer> }
     <div id="dialogs">
-        <GetNameDialog updateState={() => 
-          {this.checkStorage(); setActive({...dialog, getStartedDialog: true})}} 
+        {dialog.getStartedDialog && <GetNameDialog updateState={() => 
+          {refresh(); setActive({...dialog, getStartedDialog: false})}} 
           show={dialog.getStartedDialog ? true : false} 
-          hasShadowOverlay={true} /> 
+        hasShadowOverlay={true} /> }
         
         {dialog.aboutDialog && <AboutDialog refresh={() => setActive({...dialog, aboutDialog: !dialog.aboutDialog})} 
         show={dialog.aboutDialog} hasShadowOverlay={true} /> }

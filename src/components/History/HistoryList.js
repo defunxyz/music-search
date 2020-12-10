@@ -25,7 +25,7 @@ export default (props) => {
             <ul>
                 {data.map((item) =>
                     <li id={item.id} key={item.id} data-type={item.type}>
-                        <HistoryItem data={item} dataRenderHandler={props.dataRenderHandler} />
+                        <HistoryItem data={item} dataRenderHandler={props.dataRenderHandler} delete={props.handleDelete} />
                     </li>)}
             </ul>
         </div>

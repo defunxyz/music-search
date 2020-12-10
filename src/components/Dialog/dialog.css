@@ -91,6 +91,7 @@
     background-color: #3A3B3C;
     color: #E4E6EB;
     touch-action: manipulation;
+    outline: 0 none;
 }
 
 .dialog form input[type=text]:focus {
