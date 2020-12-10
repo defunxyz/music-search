@@ -1,3 +1,11 @@
+/**
+ * Helper container.
+ * 
+ * @file components/StatisticsContainer.js
+ * @author Fisnik
+ * @copyright 2020 Fisnik
+ */
+
 import React, {useEffect, useState} from "react";
 
 export default (props) => {

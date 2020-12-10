@@ -1,9 +1,11 @@
-/*
-  Author: Fisnik
-*/
+/**
+ * @file storage
+ * @author Fisnik
+ * @copyright 2020 Fisnik
+ */
 
 /**
- * 
+ * Loads the data from localstorage given an identification key
  * @param {*} key 
  */
 const loadData = (key='musicapp') => {
@@ -16,6 +18,7 @@ const loadData = (key='musicapp') => {
 }
 
 /**
+ * Saves data to localstorage given an identification key
  * 
  * @param {*} data 
  * @param {*} key 
@@ -25,6 +28,9 @@ const saveData = (data, key='musicapp') => {
     localStorage.setItem(key, serializedState);
 }
 
+/**
+ * Clears all data in localstorage
+ */
 const clearLocalStorage = () => {
     localStorage.clear();
 }

@@ -1,3 +1,9 @@
+/**
+ * @file components/HistoryItem.js
+ * @author Fisnik
+ * @copyright 2020 Fisnik
+ */
+
 import React from "react";
 import { fetchExtractFromWikipedia, fetchLyrics } from "../../api";
 import { loadData } from "../../storage";

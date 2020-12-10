@@ -1,3 +1,9 @@
+/**
+ * @file components/PoweredBy.js
+ * @author Fisnik
+ * @copyright 2020 Fisnik
+ */
+
 import React from 'react';
 import styled from "styled-components";
 import TextLoop from "react-text-loop";

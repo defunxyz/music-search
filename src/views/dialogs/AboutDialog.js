@@ -1,3 +1,9 @@
+/**
+ * @file components/AboutDialog.js
+ * @author Fisnik
+ * @copyright 2020 Fisnik
+ */
+
 import React from "react";
 import 
 { Dialog, 
@@ -11,7 +17,7 @@ from "../../components/Dialog";
 
 export default class AboutDialog extends React.Component {
     constructor(props) {
-        super();
+        super(props);
         this.state = {};
         this.handleClose = this.handleClose.bind(this);
     }
@@ -38,7 +44,7 @@ export default class AboutDialog extends React.Component {
     }
 
     render = () => {
-        const { hasShadowOverlay, show} = this.props;
+        const { hasShadowOverlay, show } = this.props;
 
         return (
             <ModalDialog id={"about-dialog"} hasShadowOverlay={hasShadowOverlay} blurEffect={false} display={show}>
@@ -48,9 +54,16 @@ export default class AboutDialog extends React.Component {
                         <DialogCloseBtn handleClose={this.handleClose} enableClose={true}></DialogCloseBtn>
                     </DialogBar>
                     <DialogBody>
-                        <div id="authors">
-                            <h4 className="author">Fisnik <span className="title">[[nerd]]</span></h4>
-                            <h4 className="author">Jerry <span className="title">[[mathematician]]</span></h4>
+                        <div className="developers" id="developers">
+                            <p className="about">{this.props.appinfo.about}</p>
+                            <hr />
+                            <h3>Developers</h3>
+                            {this.props.appinfo.developers.map((developer) => (
+                                <>
+                                <h4>{developer.name} <span>{developer.title}</span></h4>
+                                <p>{developer.about}</p>
+                                </>
+                            ))}
                         </div>
                     </DialogBody>
                     <DialogFooter></DialogFooter>

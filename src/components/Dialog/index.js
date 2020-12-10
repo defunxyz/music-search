@@ -1,3 +1,11 @@
+/**
+ * A dialog component for building dialogs of any shape, size, and taste. ;-)
+ * 
+ * @file components/Dialog.js
+ * @author Fisnik
+ * @copyright 2020 Fisnik
+ */
+
 import React from "react";
 import "./dialog.css";
 

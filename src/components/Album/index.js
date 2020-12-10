@@ -1,3 +1,9 @@
+/**
+ * @file components/Album.js
+ * @author Fisnik
+ * @copyright 2020 Fisnik
+ */
+
 import React from "react";
 import { Scrollbars } from 'react-custom-scrollbars';
 import dateFormat from 'dateformat';

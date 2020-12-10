@@ -1,3 +1,9 @@
+/**
+ * @file components/SearchItem.js
+ * @author Fisnik
+ * @copyright 2020 Fisnik
+ */
+
 import React from "react";
 import {getArtistSpotify, getAlbumSpotify, getTrackSpotify, 
     fetchExtractFromWikipedia, fetchLyrics} from "../../api";

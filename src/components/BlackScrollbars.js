@@ -1,3 +1,9 @@
+/**
+ * @file components/BlackScrollbars.js
+ * @author Fisnik
+ * @copyright 2020 Fisnik
+ */
+
 import React, { Component } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars';
 

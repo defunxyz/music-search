@@ -1,3 +1,9 @@
+/**
+ * @file components/Artist.js
+ * @author Fisnik
+ * @copyright 2020 Fisnik
+ */
+
 import React from "react";
 import "./index.css";
 import convertNumber from "../../utility";

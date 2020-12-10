@@ -1,0 +1,16 @@
+{
+    "about": "This is a music information search utility, built for quickly looking up information about an artist, finding a song or a track.",
+    "version": "0.0.0.1",
+    "developers": [
+        {
+            "name": "Fisnik",
+            "title": "[[nerd]]",
+            "about": "A computer nerd. Hacker. Deep interest in Mathematics. Enemy of the state."
+        },
+        {
+            "name": "Jerry",
+            "title": "[[nerd]]",
+            "about": ""
+        }
+    ]
+}

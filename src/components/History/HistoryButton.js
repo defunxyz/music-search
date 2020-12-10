@@ -1,3 +1,9 @@
+/**
+ * @file components/HistoryButton.js
+ * @author Fisnik
+ * @copyright 2020 Fisnik
+ */
+
 import React, { useEffect, useState } from "react";
 
 const HistoryButton = (props) => {

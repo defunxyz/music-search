@@ -1,3 +1,11 @@
+/**
+ * The search interface.
+ * 
+ * @file components/Search.js
+ * @author Fisnik
+ * @copyright 2020 Fisnik
+ */
+
 import React from 'react';
 import { authSpotifyAPI, getSpotifyToken, searchSpotifyAPI } from '../api';
 import Autosuggest from './Autosuggest';

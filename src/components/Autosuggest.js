@@ -1,3 +1,9 @@
+/**
+ * @file components/Autosuggest.js
+ * @author Fisnik
+ * @copyright 2020 Fisnik
+ */
+
 import React from "react";
 import BlackScrollbars from "./BlackScrollbars";
 import SearchItem from "./Data/SearchItem";

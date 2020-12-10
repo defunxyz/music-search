@@ -1,3 +1,9 @@
+/**
+ * @file components/HistoryPopOver.js
+ * @author Fisnik
+ * @copyright 2020 Fisnik
+ */
+
 import React from "react";
 import PropTypes from "prop-types";
 import "./history.css";

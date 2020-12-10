@@ -1,3 +1,9 @@
+/**
+ * @file components/Utility.js
+ * @authors Fisnik, Jerry
+ * @copyright 2020 Fisnik
+ */
+
 export default function convertNumber(number){
 		var nbr=number.toString();
 		var breakPoint=nbr.length%3;

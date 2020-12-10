@@ -1,24 +1,14 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import Greeting from "./components/Greeting";
-import Alert from "./components/Alert";
-import Search from "./components/Search";
-import PoweredBy from "./components/PoweredBy";
-import Copyright from "./components/Copyright";
-import StatisticsContainer from './components/StatisticsContainer';
-import GetNameDialog from './views/dialogs/GetNameDialog';
-import AboutDialog from './views/dialogs/AboutDialog';
-import KeyboardDialog from './views/dialogs/KeyboardDialog';
-
-import {getSpotifyToken, authSpotifyAPI} from "./api";
-import ArtistDialog from "./views/dialogs/ArtistDialog";
-import AlbumDialog from "./views/dialogs/AlbumDialog";
-import TrackDialog from "./views/dialogs/TrackDialog";
-
-import HistoryButton from "./components/History/HistoryButton";
-import HistoryPopOver from "./components/History/HistoryPopOver";
 
 import { loadData } from "./storage";
+import { getSpotifyToken, authSpotifyAPI } from "./api";
+import { HistoryButton, HistoryPopOver } from "./components/History";
+import { Alert, Search, PoweredBy, Copyright, StatisticsContainer, Greeting } from "./components";
+import { GetNameDialog, AboutDialog, KeyboardDialog, ArtistDialog, AlbumDialog, TrackDialog } from "./views/dialogs";
+
+var stats = require("./stats.json");
+var about = require("./about.json");
 
 const AppText = styled.h1`
   background-clip: text;
@@ -33,25 +23,7 @@ const App = () => {
   const [state, setState] = useState({
     data: {},
     wiki: {},
-    lyrics: {},
-    stats: [
-      {
-        total: "100M+",
-        label: "Songs"
-      },
-      {
-        total: "10M+",
-        label: "Albums"
-      },
-      {
-        total: "20M+",
-        label: "Songs"
-      },
-      {
-        total: "30M+",
-        label: "Songs"
-      }
-    ]
+    lyrics: {}
   });
   const [storage_data, setStorageData] = useState({
     username: "",
@@ -71,6 +43,8 @@ const App = () => {
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown, false);
+
+    console.log(about);
 
     const fetchSpotifyToken = async () => {
       const token = await authSpotifyAPI();
@@ -137,11 +111,9 @@ const App = () => {
     </header>
     <main>
       <Search dataRenderHandler={dataRenderHandler} />
-      <StatisticsContainer data={state.stats} />
+      <StatisticsContainer data={stats} />
       <PoweredBy />
-      { !notification && 
-        <Copyright toggleShowAbout={() => setActive({...dialog, aboutDialog: true})} style={{ opacity: 0.5, marginTop: 30 }} /> 
-      }
+      { !notification && <Copyright toggleShowAbout={() => setActive({...dialog, aboutDialog: true})} style={{ opacity: 0.5, marginTop: 30 }} /> }
     </main>
     { history && <HistoryPopOver show={history} data={storage_data.history} dataRenderHandler={dataRenderHandler} refresh={refresh} /> }
     { !notification && <HistoryButton showHistoryPopOver={() => showHistory(!history)} data={storage_data.history} /> }
@@ -156,7 +128,7 @@ const App = () => {
         hasShadowOverlay={true} /> }
         
         {dialog.aboutDialog && <AboutDialog refresh={() => setActive({...dialog, aboutDialog: !dialog.aboutDialog})} 
-        show={dialog.aboutDialog} hasShadowOverlay={true} /> }
+        show={dialog.aboutDialog} hasShadowOverlay={true} appinfo={about} /> }
         
         {dialog.helpDialog && <KeyboardDialog reset={() => setActive({...dialog, helpDialog: !dialog.helpDialog})} 
         show={dialog.helpDialog} hasShadowOverlay={true} /> }

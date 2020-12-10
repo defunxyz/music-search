@@ -618,4 +618,25 @@ hr {
 }
 /**************************************/
 
+.developers h3 {
+    margin-bottom: 1rem;
+    font-weight: 300;
+}
+
+.developers .about {
+    letter-spacing: normal;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.developers hr {
+    margin: 0;
+    background: #3E4042;
+    color: #dadde1;
+    height: 1px;
+    border-width: 0;
+    margin-bottom: 10px;
+    box-shadow: 0 12px 28px 0 var(--shadow-2),0 2px 4px 0 var(--shadow-1),inset 0 0 0 1px var(--shadow-inset);
+}
+
 @media screen and (max-width: 480px) {}

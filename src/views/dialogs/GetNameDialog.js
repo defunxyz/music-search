@@ -1,3 +1,9 @@
+/**
+ * @file components/GetNameDialog.js
+ * @author Fisnik
+ * @copyright 2020 Fisnik
+ */
+
 import React from "react";
 import 
 { Dialog, 

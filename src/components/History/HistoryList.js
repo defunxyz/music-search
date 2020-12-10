@@ -1,3 +1,9 @@
+/**
+ * @file components/HistoryList.js
+ * @author Fisnik
+ * @copyright 2020 Fisnik
+ */
+
 import React, { useEffect } from "react";
 import HistoryItem from "../Data/HistoryItem";
 

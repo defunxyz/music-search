@@ -1,3 +1,9 @@
+/**
+ * @file components/Copyright.js
+ * @author Fisnik
+ * @copyright 2020 Fisnik
+ */
+
 import React from "react";
 
 const Copyright = (props) => {
