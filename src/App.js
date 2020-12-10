@@ -47,6 +47,7 @@ const App = () => {
   const [history, showHistory] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line
     document.addEventListener("keydown", handleKeyDown, false);
 
     console.log(about);
@@ -58,6 +59,7 @@ const App = () => {
       }
     }
 
+    // eslint-disable-next-line
     if(spotify_token === undefined || spotify_token === {}){
       fetchSpotifyToken();
     }
@@ -69,6 +71,7 @@ const App = () => {
     } else {
       setNotification(true);
     }
+    // eslint-disable-next-line
   }, []);
 
   const handleKeyDown = (e) => {
@@ -95,10 +98,8 @@ const App = () => {
           setActive({...dialog, artistDialog: true});
           break;
       case 'album':
-        {
           setState({...state, data: data, lyrics: extra });
           setActive({...dialog, albumDialog: true});
-        }
           break;
       case 'track':
           setState({...state, data: data, lyrics: extra });
