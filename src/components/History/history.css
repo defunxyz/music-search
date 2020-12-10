@@ -18,6 +18,7 @@ h4 {
     bottom: 0;
     right: 80px;
     height: 390px;
+    z-index: 0;
 }
 
 .popout-bar {
@@ -88,6 +89,7 @@ h4 {
 
 .history ul li .history-item:hover {
     background-color: var(--light-gray-transparent-hover-effect);
+    transition: all .5s ease-in-out;
 }
 
 .history ul li .history-item:hover .roundBtn {
