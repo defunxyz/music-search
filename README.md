@@ -9,11 +9,18 @@ Eventually, we move forward quickly once settled with a new plan in place. And n
 
 *P.s. our code is really messy and scary!*
 
-
 ## The Application
+This utility is a simple website, with a dark theme, we decided to go with dark because it looks good. It has a search input, a separate component which greets the user depending on time of the day, and a special feature which is the history feature.
+
+P.s.s. Some hints:
+
+* Press **SHIFT + ?** - this will open up a dialog with shortcut-keys
+* In an active dialog, press **ESC** to close.
 
 ## Technical Decisions
 
+
 ## Addendum
+Due to very tough time constraints, there might be some strange behaviour in this utility. However, eventually, in the near feature, unless occupied by some other more important project, we might find time and come back and finish this *perfectly*. 
 
 ## License
