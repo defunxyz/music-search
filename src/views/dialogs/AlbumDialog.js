@@ -44,7 +44,7 @@ export default class AlbumDialog extends React.Component {
     }
 
     render = () => {
-        const  { hasShadowOverlay, show, data, lyrics } = this.props;
+        const  { hasShadowOverlay, show, data, lyrics, scrollable } = this.props;
         let bordertop = true;
         let copyright = ""; 
 
@@ -55,7 +55,7 @@ export default class AlbumDialog extends React.Component {
         }
 
         return (
-            <ModalDialog hasShadowOverlay={hasShadowOverlay} display={show}>
+            <ModalDialog hasShadowOverlay={hasShadowOverlay} display={show} scrollable={scrollable}>
                 <Dialog margintop={15} borderBottom={false} enableClose={true} display={show}>
                     <DialogBar centerTitle={true}>
                     <DialogTitle>{data.album_type}</DialogTitle>

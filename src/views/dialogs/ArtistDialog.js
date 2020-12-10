@@ -43,9 +43,9 @@ export default class ArtistDialog extends React.Component {
     }
 
     render = () => {
-        const  { hasShadowOverlay, show } = this.props;
+        const  { hasShadowOverlay, show, scrollable } = this.props;
         return (
-            <ModalDialog hasShadowOverlay={hasShadowOverlay} display={show}>
+            <ModalDialog hasShadowOverlay={hasShadowOverlay} display={show} scrollable={scrollable}>
                 <Dialog margintop={15} borderBottom={false} enableClose={true} display={show}>
                     <DialogBar>
                         <div className="card-invertcut"></div>

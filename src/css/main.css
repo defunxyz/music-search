@@ -114,6 +114,9 @@ a {
     width: 100%;
     min-height: 100%;
     background: var(--very-dark-shade-of-gray);
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto 1fr auto;
 }
 
 header {
@@ -175,6 +178,10 @@ footer {
     vertical-align: middle;
     border-radius: 50%;
     filter: invert(59%) sepia(11%) saturate(200%) saturate(135%) hue-rotate(176deg) brightness(96%) contrast(94%);
+}
+
+footer .app-copyright .about-icon {
+    filter: none !important;
 }
 
 .app-copyright .about-icon:hover .hover-effect {
@@ -393,9 +400,14 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 */
 .statistics-container {
     padding: 1rem;
-    width: 960px;
     margin: 2rem auto;
     color: var(--base-white-color);
+    display: flex;
+    flex-flow: column;
+        flex-wrap: nowrap;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
 }
 
 .statistics-data {
@@ -571,7 +583,6 @@ hr {
 }
 
 .floating-circle-btn:hover {
-    /* box-shadow: 0 4px 4px  #E5E5E5, 0 16px 28px #CCCCCC; */
     background-color: rgba(255, 255, 255, 0.2);
 }
 
@@ -634,4 +645,72 @@ hr {
     box-shadow: 0 12px 28px 0 var(--shadow-2),0 2px 4px 0 var(--shadow-1),inset 0 0 0 1px var(--shadow-inset);
 }
 
-@media screen and (max-width: 480px) {}
+@media (min-width: 480px) {
+    #root {
+        grid-template-columns: auto;
+        grid-template-rows: 1fr;
+        grid-template-areas: "header" "main" "footer";
+    }
+
+    .statistics-container {
+        width: 100%;
+        padding: 0;
+        margin: 1rem 0 0 0;
+    }
+
+    .statistics-data {
+        flex-flow: row;
+        width: 100%;
+    }
+
+    .statistics-data .stats {
+        width: 200px;
+        height: 100px;
+        border-right: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    #root {
+        overflow-y: scroll;
+    }
+
+    .statistics-container {
+        width: 100%;
+        padding: 0;
+        margin: 1rem 0 0 0;
+    }
+
+    .statistics-data {
+        flex-flow: column;
+        width: 100%;
+    }
+
+    .statistics-data .stats {
+        width: 100%;
+        border-right: 0 none;
+        height: 100%;
+    }
+
+    .popout {
+        right: 0 !important;
+        width: 100% !important;
+        z-index: 1 !important;
+    }
+
+    .modal-dialog {
+        overflow-y: hidden !important;
+    }
+
+    .dialog {
+        margin-top: 50% !important;
+        width: 100% !important;
+    }
+}
+
+@media (min-width: 640px) {    
+    .statistics-data {
+        flex-direction: row;
+        width: 100%;
+    }
+}

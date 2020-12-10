@@ -13,6 +13,11 @@ import styled from "styled-components";
 const Greetings = styled.div`
   color: #fff;
   padding: 1rem;
+
+  @media (max-width: 480px) {
+    width: 100%;
+    text-align: center;
+  }
 `
 const Text = styled.h3`
   font-weight: 300;

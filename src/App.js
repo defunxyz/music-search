@@ -17,6 +17,11 @@ const AppText = styled.h1`
   padding: 1rem;
   font-size: 1.1rem;
   text-rendering: geometricPrecision;
+
+  @media (max-width: 480px) {
+    width: 100%;
+    text-align: center;
+  }
 `;
 
 const App = () => {
@@ -90,8 +95,10 @@ const App = () => {
           setActive({...dialog, artistDialog: true});
           break;
       case 'album':
+        {
           setState({...state, data: data, lyrics: extra });
           setActive({...dialog, albumDialog: true});
+        }
           break;
       case 'track':
           setState({...state, data: data, lyrics: extra });
@@ -128,18 +135,18 @@ const App = () => {
         hasShadowOverlay={true} /> }
         
         {dialog.aboutDialog && <AboutDialog refresh={() => setActive({...dialog, aboutDialog: !dialog.aboutDialog})} 
-        show={dialog.aboutDialog} hasShadowOverlay={true} appinfo={about} /> }
+        show={dialog.aboutDialog} hasShadowOverlay={true} appinfo={about} scrollable={false} /> }
         
         {dialog.helpDialog && <KeyboardDialog reset={() => setActive({...dialog, helpDialog: !dialog.helpDialog})} 
         show={dialog.helpDialog} hasShadowOverlay={true} /> }
         
         {dialog.artistDialog && <ArtistDialog data={state.data} 
         text={state.wiki} refresh={() => setActive({...dialog, artistDialog: !dialog.artistDialog})} 
-        show={dialog.artistDialog} hasShadowOverlay={true} /> }
+        show={dialog.artistDialog} hasShadowOverlay={true} scrollable={true} /> }
 
-        {dialog.albumDialog && <AlbumDialog data={this.state.data} lyrics={this.state.lyrics}
+        {dialog.albumDialog && <AlbumDialog data={state.data} lyrics={state.lyrics}
         refresh={() => setActive({...dialog, albumDialog: !dialog.albumDialog})} 
-        show={dialog.albumDialog} hasShadowOverlay={true} />}
+        show={dialog.albumDialog} hasShadowOverlay={true} scrollable={true} />}
 
         {dialog.trackDialog && <TrackDialog data={state.data} lyrics={state.lyrics}
         refresh={() => setActive({...dialog, trackDialog: !dialog.trackDialog})} 

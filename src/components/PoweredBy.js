@@ -14,6 +14,14 @@ const PoweredBy = styled.div`
     margin: 20px auto;
     font-weight: 300;
     text-align: center;
+
+    @media (max-width: 480px) {
+        width: 100%;
+    }
+
+    @media (min-width: 480px) {
+        width: 100%;
+    }
 `;
 
 const PowerdBySpan = styled.span`
