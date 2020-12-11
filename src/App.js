@@ -118,7 +118,7 @@ const App = () => {
       {storage_data.username && <Greeting name={storage_data.username} />}
     </header>
     <main>
-      <Search dataRenderHandler={dataRenderHandler} />
+      <Search dataRenderHandler={dataRenderHandler} disabled={notification ? true : false} />
       <StatisticsContainer data={stats} />
       <PoweredBy />
       { !notification && <Copyright toggleShowAbout={() => setActive({...dialog, aboutDialog: true})} style={{ opacity: 0.5, marginTop: 30 }} /> }

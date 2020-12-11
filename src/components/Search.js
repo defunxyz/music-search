@@ -104,7 +104,7 @@ export default class Search extends React.Component {
     }
 
     render() {
-      const {matches, query} = this.state
+      const { matches, query } = this.state;
         return (
           <section className="search-container">
             <div id="searchbox" className="searchbox" role="searchbox">
@@ -117,7 +117,8 @@ export default class Search extends React.Component {
                   type="search"
                   value={this.state.query}
                   placeholder="Type to instantly search for an artist, album, or song"
-                  onChange={e => this.handleChange(e)} />
+                  onChange={e => this.handleChange(e)}
+                  disabled={`${this.props.disabled ? 'disabled' : ''}`} />
               </form>
             </div>
             <Autosuggest matches={matches} query={query} dataRenderHandler={this.props.dataRenderHandler} clear={this.clear} />
