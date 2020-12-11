@@ -113,7 +113,7 @@ const App = () => {
     <>
     <header className="clearfix">
       <AppText className="lfloat">
-        Instantly Search artists, songs,<br />anytime, anywhere.
+        Instantly Search artists, albums, and songs<br />anytime, anywhere.
       </AppText>
       {storage_data.username && <Greeting name={storage_data.username} />}
     </header>

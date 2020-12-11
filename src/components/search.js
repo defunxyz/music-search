@@ -116,7 +116,7 @@ export default class Search extends React.Component {
                 <input
                   type="search"
                   value={this.state.query}
-                  placeholder="Seach artists, songs, or lyrics"
+                  placeholder="Type to instantly search for an artist, album, or song"
                   onChange={e => this.handleChange(e)} />
               </form>
             </div>
