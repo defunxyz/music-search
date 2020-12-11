@@ -18,14 +18,14 @@ const Greetings = styled.div`
     width: 100%;
     text-align: center;
   }
-`
+`;
 const Text = styled.h3`
   font-weight: 300;
   margin: 0 !important;
-`
+`;
 const Username = styled.span`
 font-weight: 500;
-`
+`;
 
 export default class Greeting extends React.Component {
   constructor(props) {
@@ -37,7 +37,12 @@ export default class Greeting extends React.Component {
   }
 
   componentDidMount = () => {
-    setInterval(this.timeOfDay(), 1000);
+    this.timeOfDay();
+    this.interval = setInterval(() => { this.timeOfDay() }, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   timeOfDay = () => {

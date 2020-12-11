@@ -1,18 +1,14 @@
 [
     {
-      "total": "100M+",
-      "label": "Songs"
+      "total": "2M+",
+      "label": "Artists"
     },
     {
       "total": "10M+",
       "label": "Albums"
     },
     {
-      "total": "20M+",
-      "label": "Songs"
-    },
-    {
-      "total": "30M+",
-      "label": "Songs"
+      "total": "100M+",
+      "label": "Songs/Tracks"
     }
 ]
