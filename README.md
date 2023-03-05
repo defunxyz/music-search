@@ -23,8 +23,8 @@ Runs only with older version of node. Supported: `Node v14.3.0`.
 ## Installation
 1. Make sure you have [node.js](https://nodejs.org/en/) and 
 [npm](https://www.npmjs.com/get-npm) installed on your machine.
-2. `$ git clone https://github.com/sismasodit/musicapp.git`
-3. `$ cd musicapp`
+2. `$ git clone https://github.com/defunxyz/music-search.git`
+3. `$ cd music-search`
 4. `$ npm install`
 5. `$ npm start`
 6. Now run on [localhost:3000](http://localhost:3000)
