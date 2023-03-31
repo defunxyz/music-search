@@ -17,8 +17,7 @@ P.s.s. Some hints:
 * Press **SHIFT + ?** - this will open up a dialog with shortcut-keys
 * In an active dialog, press **ESC** to close.
 
-## WARNING: 
-Runs only with older version of node. Supported: `Node v14.3.0`. 
+> **Note**: Runs only with older version of node. Supported: `Node v14.3.0`. 
 
 ## Installation
 1. Make sure you have [node.js](https://nodejs.org/en/) and 
