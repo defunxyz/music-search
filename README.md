@@ -61,4 +61,4 @@ Due to very tough time constraints, there might be some strange behaviour in thi
 [5] https://www.monterail.com/blog/vue-vs-react-2020
 ```
 ## License
-This project is open source software [licensed as MIT](LICENSE).
+This project is licensed under the [BSD-2-Clause license](LICENSE).
