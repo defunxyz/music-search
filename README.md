@@ -53,10 +53,10 @@ For third-party web APIs, we decided to pick a few that suited our web applicati
 Due to very tough time constraints, there might be some strange behaviour in this utility. However, eventually, in the near feature, unless occupied by some other more important project, we might find time and come back and finish this *perfectly*. 
 
 [^1]:  ["Why and Where Should you Use React for Web Development?"](https://www.simform.com/blog/why-use-react/). 
-[^2]:  ["Why and Where Should you Use React for Web Development?"](https://gist.github.com/tkrotoff/b1caa4c3a185629299ec234d2314e190). 
-[^3]:  ["Why and Where Should you Use React for Web Development?"](https://stories.jotform.com/7-reasons-why-you-should-use-react-ad420c634247). 
-[^4]:  ["Why and Where Should you Use React for Web Development?"](https://technostacks.com/blog/react-vs-angular/). 
-[^5]:  ["Why and Where Should you Use React for Web Development?"](https://www.monterail.com/blog/vue-vs-react-2020). 
+[^2]:  ["Front-end frameworks popularity (React, Vue, Angular and Svelte) "](https://gist.github.com/tkrotoff/b1caa4c3a185629299ec234d2314e190). 
+[^3]:  ["7 Reasons why you should use React"](https://stories.jotform.com/7-reasons-why-you-should-use-react-ad420c634247). 
+[^4]:  ["React vs Angular: Which Is A Better JavaScript Framework?"](https://technostacks.com/blog/react-vs-angular/). 
+[^5]:  ["Vue vs React in 2022 - Comparison of Two Most Popular JS Frameworks"](https://www.monterail.com/blog/vue-vs-react-2020). 
 
 ## License
 This project is licensed under the [BSD-2-Clause license](LICENSE).
