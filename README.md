@@ -29,12 +29,12 @@ P.s.s. Some hints:
 6. Now run on [localhost:3000](http://localhost:3000)
 
 ## Technical Decisions
-React was chosen as the core framework of this project due to the simplicity, clean, and single-page nature of this web application. One of React’s core strengths lies in building web applications with pages that act independently from each other, for example, a component displaying time can do this in its own state without being affected by changes in another component on the same page **[1]**. 
+React was chosen as the core framework of this project due to the simplicity, clean, and single-page nature of this web application. One of React’s core strengths lies in building web applications with pages that act independently from each other, for example, a component displaying time can do this in its own state without being affected by changes in another component on the same page. [^1] 
 
 Now we will dive into some comparisons and reasons behind decisions we made, follow along. 
-The first reason we decided React over Angular, is because we liked how easy it is to quickly get started and code, there is a huge community and React is also a lot more popular compared to Angular **[2]**. On a technical note **[3]**: “one of the powerful sides of React is that it provides a good abstraction which means that it does not expose any complex internals to the user.”  In addition, since none of us had good previous experience with TypeScript we felt it would require extra time to pick up and fully learn. Furthermore, Angular has a steep learning curve and is not well-documented **[4]**.
+The first reason we decided React over Angular, is because we liked how easy it is to quickly get started and code, there is a huge community and React is also a lot more popular compared to Angular [^2]. On a technical note [^3]: “one of the powerful sides of React is that it provides a good abstraction which means that it does not expose any complex internals to the user.”  In addition, since none of us had good previous experience with TypeScript we felt it would require extra time to pick up and fully learn. Furthermore, Angular has a steep learning curve and is not well-documented [^4].
 
-When it came to Vue.js, we knew that both Vue.js and Reactjs are two of the biggest and most popular front-end frameworks out there. However, they both as always come with differences. Virtual DOM is something both frameworks implement, which allows you to refresh parts of the page, or single components without reloading the whole page **[5]**. Component-based development which allows code reuse and improves productivity, and speed is provided by both **[5]**. Syntax differs a bit. But, Reactjs at the time of decision had and still probably has more widespread usage.
+When it came to Vue.js, we knew that both Vue.js and Reactjs are two of the biggest and most popular front-end frameworks out there. However, they both as always come with differences. Virtual DOM is something both frameworks implement, which allows you to refresh parts of the page, or single components without reloading the whole page **[5]**. Component-based development which allows code reuse and improves productivity, and speed is provided by both [^5]. Syntax differs a bit. But, Reactjs at the time of decision had and still probably has more widespread usage.
 
 The last reason we decided to go with React is because of light previous experience with this framework, we decided to explore it deeper and build something cool. 
 
@@ -52,13 +52,11 @@ For third-party web APIs, we decided to pick a few that suited our web applicati
 ## Addendum
 Due to very tough time constraints, there might be some strange behaviour in this utility. However, eventually, in the near feature, unless occupied by some other more important project, we might find time and come back and finish this *perfectly*. 
 
-## Sources
-```
-[1] https://www.simform.com/why-use-react/ 
-[2] https://gist.github.com/tkrotoff/b1caa4c3a185629299ec234d2314e190 
-[3] https://stories.jotform.com/7-reasons-why-you-should-use-react-ad420c634247 
-[4] https://technostacks.com/blog/react-vs-angular/ 
-[5] https://www.monterail.com/blog/vue-vs-react-2020
-```
+[^1]:  ["Why and Where Should you Use React for Web Development?"](https://www.simform.com/blog/why-use-react/). 
+[^2]:  ["Why and Where Should you Use React for Web Development?"](https://gist.github.com/tkrotoff/b1caa4c3a185629299ec234d2314e190). 
+[^3]:  ["Why and Where Should you Use React for Web Development?"](https://stories.jotform.com/7-reasons-why-you-should-use-react-ad420c634247). 
+[^4]:  ["Why and Where Should you Use React for Web Development?"](https://technostacks.com/blog/react-vs-angular/). 
+[^5]:  ["Why and Where Should you Use React for Web Development?"](https://www.monterail.com/blog/vue-vs-react-2020). 
+
 ## License
 This project is licensed under the [BSD-2-Clause license](LICENSE).
