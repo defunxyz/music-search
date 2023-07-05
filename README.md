@@ -77,22 +77,22 @@ For third-party web APIs, we decided to pick a few that suited our web applicati
 
 ## Running examples
 
-### **1.** First time a message of how information is stored is presented to the visitor. 
+### **1.** First time a message of how information is stored is presented to the visitor
 ![alt text](screenshots/screenshot1.png)
 
-### **2.** First time asking for visitor's name. 
+### **2.** First time asking for visitor's name
 ![alt text](screenshots/screenshot2.png)
 
-### **3.** Instant auto-suggest search. 
+### **3.** Instant auto-suggest search
 ![alt text](screenshots/screenshot3.png)
 
-#### **3.1.** Search for a single by its name. 
+#### **3.1.** Search for a single by its name
 ![alt text](screenshots/screenshot5.png)
 
-### **4.** View artist profile card. 
+### **4.** View artist profile card
 ![alt text](screenshots/screenshot4.png)
 
-### **5.** Easily access searched history. 
+### **5.** Easily access searched history
 ![alt text](screenshots/screenshot6.png)
 
 ## Addendum
