@@ -7,7 +7,7 @@ After brainstorming over Zoom for a whole day, we settled with the idea of devel
 
 We settled for a search app, that would allow the visitor to freely search for their favorite artist, group, album, or single. The React-based application would provide the user with interesting information, including lyrics of their favorite songs. 
 
-The React-based application utilizes a small number of public third-party web APIs for querying this information. Please see below [3rd party web APIs used](###listing-apis-used-in-this-stack). The project was developed in such a way that pieces of code would be abstracted away, and everything is component based with proper imports. Each separate component has its functions and purpose. 
+The React-based application utilizes a small number of public third-party web APIs for querying this information. Please see below [3rd party web APIs used](#listing-apis-used-in-this-stack). The project was developed in such a way that pieces of code would be abstracted away, and everything is component based with proper imports. Each separate component has its functions and purpose. 
 
 You can freely clone this down to your machine and run it, please refer to the [Install instructions](#installing).  
 
