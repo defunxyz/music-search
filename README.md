@@ -36,7 +36,7 @@ For third-party web APIs, we decided to pick a few that suited our web applicati
 * Spotify Web API (Core driver)
 * Napster Web API
 * Wikipedia Web API (for additional details about artists e.g. bio summary)
-* APISEEDS Lyrics API
+* ~~APISEEDS Lyrics API~~ > **Warning**: Deprecated.
 
 ## **Not production ready!**
 > **Warning**: This code was developed under an older version of **Node**, and most of the `npm packages` in the `package.json` are outdated. Upgrading, as has been attempted resulted in too many errors and just became too much of a hussle. Therefore, it is highly recommended that you use this for learning purpose only. 
