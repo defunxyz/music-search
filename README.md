@@ -10,7 +10,7 @@ Eventually, we move forward quickly once settled with a new plan in place. And n
 *P.s. our code is really messy and scary!*
 
 ## The Application
-This utility is a simple website, with a dark theme, we decided to go with dark because it looks good. It has a search input, a separate component which greets the user depending on time of the day and the given name, and a special feature which is the history feature.
+This is a React-powered Web Music Search  Application, that allows you to search freely for a single, album, group, or an artist and view information about such entity. The design of this web application is by default dark theme. We decided to go with default dark theme because it looks good. It has a search input, a separate component which greets the user depending on time of the day and the given name, and a special feature which is the history feature. In essence, it is a simple music search application, which lets you lookup information at hand. For examples of running this application see below [Running examples](#running-examples).
 
 P.s.s. Some hints:
 
