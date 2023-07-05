@@ -48,7 +48,7 @@ For third-party web APIs, we decided to pick a few that suited our web applicati
 
 > :lock: **Security**: The *Dependabot* does report over 30 security vulnerabilities, but, at this point it is ignored. The authors of this project and repository cannot be held accountable if you, or your organization, or team decide to use this in production code. If you use this in production, you are solely responsible for the outcome. You have hereby been informed. 
 
-## Installation
+## Installing
 > **Warning**: Runs only with older version of node. Supported: `Node v14.3.0`. 
 
 1. Make sure you have [node.js](https://nodejs.org/en/) and 
