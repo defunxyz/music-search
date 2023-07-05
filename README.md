@@ -17,9 +17,35 @@ P.s.s. Some hints:
 * Press **SHIFT + ?** - this will open up a dialog with shortcut-keys
 * In an active dialog, press **ESC** to close.
 
-> **Warning**: Runs only with older version of node. Supported: `Node v14.3.0`. 
+## Technical Decisions
+React was chosen as the core framework of this project due to the simplicity, clean, and single-page nature of this web application. One of React’s core strengths lies in building web applications with pages that act independently from each other, for example, a component displaying time can do this in its own state without being affected by changes in another component on the same page. [^1] 
+
+Now we will dive into some comparisons and reasons behind decisions we made, follow along. 
+The first reason we decided React over Angular, is because we liked how easy it is to quickly get started and code, there is a huge community and React is also a lot more popular compared to Angular [^2]. On a technical note [^3]: “one of the powerful sides of React is that it provides a good abstraction which means that it does not expose any complex internals to the user.”  In addition, since none of us had good previous experience with TypeScript we felt it would require extra time to pick up and fully learn. Furthermore, Angular has a steep learning curve and is not well-documented [^4].
+
+When it came to Vue.js, we knew that both Vue.js and Reactjs are two of the biggest and most popular front-end frameworks out there. However, they both as always come with differences. Virtual DOM is something both frameworks implement, which allows you to refresh parts of the page, or single components without reloading the whole page [^5]. Component-based development which allows code reuse and improves productivity, and speed is provided by both [^5]. Syntax differs a bit. But, Reactjs at the time of decision had and still probably has more widespread usage.
+
+The last reason we decided to go with React is because of light previous experience with this framework, we decided to explore it deeper and build something cool. 
+
+For the CSS framework, we skipped the public options and decided to handcraft our own CSS-like framework. The decision to proceed with this was because we (1) wanted more control over our user interface and (2) wanted to do something better than what exists out there. 
+
+For third-party web APIs, we decided to pick a few that suited our web application purpose. Since we decided in a very short time to pivot and build a utility for searching artists, albums, songs, and tracks, we knew what APIs we needed to choose. 
+
+### Listing APIs used in this stack: 
+
+* Spotify Web API (Core driver)
+* Napster Web API
+* Wikipedia Web API (for additional details about artists e.g. bio summary)
+* APISEEDS Lyrics API
+
+## **Not production ready!**
+> **Warning**: This code was developed under an older version of **Node**, and most of the `npm packages` in the `package.json` are outdated. Upgrading, as has been attempted resulted in too many errors and just became too much of a hussle. Therefore, it is highly recommended that you use this for learning purpose only. 
+
+> **Security**: The *Dependabot* does report over 30 security vulnerabilities, but, at this point it is ignored. The authors of this project and repository cannot be held accountable if you, or your organization, or team decide to use this in production code. If you use this in production, you are solely responsible for the outcome. You have hereby been informed. 
 
 ## Installation
+> **Warning**: Runs only with older version of node. Supported: `Node v14.3.0`. 
+
 1. Make sure you have [node.js](https://nodejs.org/en/) and 
 [npm](https://www.npmjs.com/get-npm) installed on your machine.
 2. `$ git clone https://github.com/defunxyz/music-search.git`
@@ -53,27 +79,6 @@ You can now view musicapp in the browser.
 Note that the development build is not optimized.
 To create a production build, use npm run build.
 ```
-
-## Technical Decisions
-React was chosen as the core framework of this project due to the simplicity, clean, and single-page nature of this web application. One of React’s core strengths lies in building web applications with pages that act independently from each other, for example, a component displaying time can do this in its own state without being affected by changes in another component on the same page. [^1] 
-
-Now we will dive into some comparisons and reasons behind decisions we made, follow along. 
-The first reason we decided React over Angular, is because we liked how easy it is to quickly get started and code, there is a huge community and React is also a lot more popular compared to Angular [^2]. On a technical note [^3]: “one of the powerful sides of React is that it provides a good abstraction which means that it does not expose any complex internals to the user.”  In addition, since none of us had good previous experience with TypeScript we felt it would require extra time to pick up and fully learn. Furthermore, Angular has a steep learning curve and is not well-documented [^4].
-
-When it came to Vue.js, we knew that both Vue.js and Reactjs are two of the biggest and most popular front-end frameworks out there. However, they both as always come with differences. Virtual DOM is something both frameworks implement, which allows you to refresh parts of the page, or single components without reloading the whole page [^5]. Component-based development which allows code reuse and improves productivity, and speed is provided by both [^5]. Syntax differs a bit. But, Reactjs at the time of decision had and still probably has more widespread usage.
-
-The last reason we decided to go with React is because of light previous experience with this framework, we decided to explore it deeper and build something cool. 
-
-For the CSS framework, we skipped the public options and decided to handcraft our own CSS-like framework. The decision to proceed with this was because we (1) wanted more control over our user interface and (2) wanted to do something better than what exists out there. 
-
-For third-party web APIs, we decided to pick a few that suited our web application purpose. Since we decided in a very short time to pivot and build a utility for searching artists, albums, songs, and tracks, we knew what APIs we needed to choose. 
-
-### Listing APIs used in this stack: 
-
-* Spotify Web API (Core driver)
-* Napster Web API
-* Wikipedia Web API (for additional details about artists e.g. bio summary)
-* APISEEDS Lyrics API
 
 ## Running examples
 

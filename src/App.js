@@ -53,6 +53,8 @@ const App = () => {
     console.log(about);
 
     const fetchSpotifyToken = async () => {
+      console.log("Spotify CLIENT_ID: " + process.env.REACT_APP_SPOTIFY_CLIENT_ID)
+      console.log("Spotify CLIENT_SECRET: " + process.env.REACT_APP_SPOTIFY_CLIENT_SECRET)
       const token = await authSpotifyAPI();
       if(token){
         setToken(getSpotifyToken());
@@ -60,7 +62,7 @@ const App = () => {
     }
 
     // eslint-disable-next-line
-    if(spotify_token === undefined || spotify_token === {}){
+    if(spotify_token === undefined || spotify_token == {}){
       fetchSpotifyToken();
     }
 
