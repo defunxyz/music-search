@@ -17,7 +17,7 @@ P.s.s. Some hints:
 * Press **SHIFT + ?** - this will open up a dialog with shortcut-keys
 * In an active dialog, press **ESC** to close.
 
-> **Note**: Runs only with older version of node. Supported: `Node v14.3.0`. 
+> **Warning**: Runs only with older version of node. Supported: `Node v14.3.0`. 
 
 ## Installation
 1. Make sure you have [node.js](https://nodejs.org/en/) and 
@@ -27,6 +27,32 @@ P.s.s. Some hints:
 4. `$ npm install`
 5. `$ npm start`
 6. Now run on [localhost:3000](http://localhost:3000)
+
+> **Note**: Please make an `.env` file in the root folder with the content below:
+
+```
+REACT_APP_NAPSTER_API_KEY=
+REACT_APP_NAPSTER_API_KEY_SECRET=
+
+REACT_APP_SPOTIFY_CLIENT_ID=
+REACT_APP_SPOTIFY_CLIENT_SECRET=
+
+REACT_APP_APISEED_API_KEY=
+```
+
+> **Note**: If everything goes well, you should see the output shown below:
+
+```
+Compiled successfully!
+
+You can now view musicapp in the browser.
+
+  Local:            http://localhost:3000
+  On Your Network:  http://192.168.64.1:3000
+
+Note that the development build is not optimized.
+To create a production build, use npm run build.
+```
 
 ## Technical Decisions
 React was chosen as the core framework of this project due to the simplicity, clean, and single-page nature of this web application. One of React’s core strengths lies in building web applications with pages that act independently from each other, for example, a component displaying time can do this in its own state without being affected by changes in another component on the same page. [^1] 
@@ -48,6 +74,26 @@ For third-party web APIs, we decided to pick a few that suited our web applicati
 * Napster Web API
 * Wikipedia Web API (for additional details about artists e.g. bio summary)
 * APISEEDS Lyrics API
+
+## Running examples
+
+### **1.** First time a message of how information is stored is presented to the visitor. 
+![alt text](screenshots/screenshot1.png)
+
+### **2.** First time asking for visitor's name. 
+![alt text](screenshots/screenshot2.png)
+
+### **3.** Instant auto-suggest search. 
+![alt text](screenshots/screenshot3.png)
+
+#### **3.1.** Search for a single by its name. 
+![alt text](screenshots/screenshot5.png)
+
+### **4.** View artist profile card. 
+![alt text](screenshots/screenshot4.png)
+
+### **5.** Easily access searched history. 
+![alt text](screenshots/screenshot6.png)
 
 ## Addendum
 Due to very tough time constraints, there might be some strange behaviour in this utility. However, eventually, in the near feature, unless occupied by some other more important project, we might find time and come back and finish this *perfectly*. 
