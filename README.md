@@ -17,6 +17,8 @@ P.s.s. Some hints:
 * Press **SHIFT + ?** - this will open up a dialog with shortcut-keys
 * In an active dialog, press **ESC** to close.
 
+![alt text](screenshots/dialog-keyboard.png)
+
 ## Technical Decisions
 React was chosen as the core framework of this project due to the simplicity, clean, and single-page nature of this web application. One of React’s core strengths lies in building web applications with pages that act independently from each other, for example, a component displaying time can do this in its own state without being affected by changes in another component on the same page. [^1] 
 
