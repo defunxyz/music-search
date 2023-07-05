@@ -1,13 +1,16 @@
 # Music Search Utility
 
 ## Motivation
-We decided to build an application, using one of the top popular Javascript frameworks out there. So, we decided we build something cool and (hopefully) useful. We brainstormed for a while and eventually decided to start building a music player, browser based using the *HTML5 Audio API*. But, as we moved forward, our time constraint caused us to eventually pivot quickly.
+This project represents a web application that is powered by Reactjs under Nodejs and is designed to be modern and good looking. The core motivation behind this project was to get more familiar with Reactjs. As two people working on this project with time constraints and the requirements to produce a deliverable that runs and serves a purpose (think: a somewhat useful React-powered application) we opted in for something we thought at the point of creating this, would look cool and handy.
 
-Since one of us was leading the way, the decision became quick to move to build an actual search engine like. But be aware this is *not really a* search engine per say. It is rather a utility which hooks up to a few third-party APIs and requests information based on keywords typed by the user.
+After brainstorming over Zoom for a whole day, we settled with the idea of developing an app that would use the HTML5 Audio API to play music—essentially a React music player. But, after iterating a couple of times and with the massive features (“Feature bloat”) we wanted to add we quickly realized that we would run late and end up never finishing the project. Therefore, we decided to make something a bit simpler, but that would still try to remain cool, interesting, relevant, and to some extent useful for music enthusiasts. So, a quick pivot it was. 
 
-Eventually, we move forward quickly once settled with a new plan in place. And now, you the reader can see what awesome and remarkable web app we’ve built. **Shhh!** There’s still some minor functionality missing, we blame this on “time constraints.”
+We settled for a search app, that would allow the visitor to freely search for their favorite artist, group, album, or single. The React-based application would provide the user with interesting information, including lyrics of their favorite songs. 
 
-*P.s. our code is really messy and scary!*
+The React-based application utilizes a small number of public third-party web APIs for querying this information. Please see below [3rd party web APIs used](###listing-apis-used-in-this-stack). The project was developed in such a way that pieces of code would be abstracted away, and everything is component based with proper imports. Each separate component has its functions and purpose. 
+
+You can freely clone this down to your machine and run it, please refer to the [Install instructions](#installing).  
+
 
 ## The Application
 This utility is a simple website, with a dark theme, we decided to go with dark because it looks good. It has a search input, a separate component which greets the user depending on time of the day and the given name, and a special feature which is the history feature.
