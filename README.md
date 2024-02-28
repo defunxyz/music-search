@@ -100,10 +100,10 @@ To create a production build, use npm run build.
 ![alt text](screenshots/screenshot5.png)
 
 ### **4.** View artist profile card
-![alt text](screenshots/screenshot4.png)
+![alt text](screenshots/profile.png)
 
 ### **5.** Easily access searched history
-![alt text](screenshots/screenshot6.png)
+![alt text](screenshots/search_history.png)
 
 ## Addendum
 Due to very tough time constraints, there might be some strange behaviour in this utility. However, eventually, in the near feature, unless occupied by some other more important project, we might find time and come back and finish this *perfectly*. 
