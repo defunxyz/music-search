@@ -1,13 +1,13 @@
 # Music Search Utility
 
-## Motivation
+## Background
 This project represents a web application that is powered by Reactjs under Nodejs and is designed to be modern and good looking. The core motivation behind this project was to get more familiar with Reactjs. As two people working on this project with time constraints and the requirements to produce a deliverable that runs and serves a purpose (think: a somewhat useful React-powered application) we opted in for something we thought at the point of creating this, would look cool and handy.
 
-After brainstorming over Zoom for a whole day, we settled with the idea of developing an app that would use the HTML5 Audio API to play music—essentially a React music player. But, after iterating a couple of times and with the massive features (“Feature bloat”) we wanted to add we quickly realized that we would run late and end up never finishing the project. Therefore, we decided to make something a bit simpler, but that would still try to remain cool, interesting, relevant, and to some extent useful for music enthusiasts. So, a quick pivot it was. 
+After brainstorming over Zoom for a whole day, we settled with the idea of developing an app that would use the HTML5 Audio API to play music—essentially a React music player. But, after iterating a couple of times and with the massive features (“Feature bloat”) we wanted to add we quickly realized that we would run late and end up never finishing the project. Therefore, we decided to make something a bit simpler, while still trying to remain cool, interesting, relevant, and to some extent useful for music enthusiasts. So, a quick pivot it was. 
 
 We settled for a search app, that would allow the visitor to freely search for their favorite artist, group, album, or single. The React-based application would provide the user with interesting information, including lyrics of their favorite songs. 
 
-The React-based application utilizes a small number of public third-party web APIs for querying this information. Please see below [3rd party web APIs used](###listing-apis-used-in-this-stack). The project was developed in such a way that pieces of code would be abstracted away, and everything is component based with proper imports. Each separate component has its functions and purpose. 
+The React-based application utilizes a small number of public third-party web APIs for querying this information. Please see below [3rd party web APIs used](#listing-apis-used-in-this-stack). The project was developed in such a way that pieces of code would be abstracted away, and everything is component based with proper imports. Each separate component has its functions and purpose. 
 
 You can freely clone this down to your machine and run it, please refer to the [Install instructions](#installing).  
 
@@ -44,11 +44,11 @@ For third-party web APIs, we decided to pick a few that suited our web applicati
 * ~~APISEEDS Lyrics API~~ (**Deprecated**).
 
 ## **Not production ready!**
-> **Warning**: This code was developed under an older version of **Node**, and most of the `npm packages` in the `package.json` are outdated. Upgrading, as has been attempted resulted in too many errors and just became too much of a hussle. Therefore, it is highly recommended that you use this for learning purpose only. 
+> **Warning**: This code was developed under an older version of **Node**, and most of the `npm packages` in the `package.json` are outdated. Upgrading, as has been attempted, but resulted in too many errors and just became too much of a hussle. At this point, time, resources, and focus is on other projects. Therefore, it is highly recommended that you use this for learning purpose only. 
 
 > :lock: **Security**: The *Dependabot* does report over 30 security vulnerabilities, but, at this point it is ignored. The authors of this project and repository cannot be held accountable if you, or your organization, or team decide to use this in production code. If you use this in production, you are solely responsible for the outcome. You have hereby been informed. 
 
-## Installation
+## Installing
 > **Warning**: Runs only with older version of node. Supported: `Node v14.3.0`. 
 
 1. Make sure you have [node.js](https://nodejs.org/en/) and 
