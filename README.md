@@ -30,7 +30,7 @@ The first reason we decided React over Angular, is because we liked how easy it 
 
 When it came to Vue.js, we knew that both Vue.js and Reactjs are two of the biggest and most popular front-end frameworks out there. However, they both as always come with differences. Virtual DOM is something both frameworks implement, which allows you to refresh parts of the page, or single components without reloading the whole page [^5]. Component-based development which allows code reuse and improves productivity, and speed is provided by both [^5]. Syntax differs a bit. But, Reactjs at the time of decision had and still probably has more widespread usage.
 
-The last reason we decided to go with React is because of light previous experience with this framework, we decided to explore it deeper and build something cool. 
+The last reason we decided to go with React is because of previous experience with this framework, we decided to explore it deeper and build something cool. 
 
 For the CSS framework, we skipped the public options and decided to handcraft our own CSS-like framework. The decision to proceed with this was because we (1) wanted more control over our user interface and (2) wanted to do something better than what exists out there. 
 
